@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Ejemplos de gr&#225;ficos usando Chart.js</title>
+<meta name ="author" content ="Norfi Carrodeguas">
+</head>
+<body>  
+<div id="contenedor">	  
+<h1>Ejemplos de gr&#225;ficos usando Chart.js</h1><br>
+
+<script src="scripts/Chart.js"></script>
+<div id="canvas-holder">
+
+<canvas id="chart-area3" width="600" height="300"></canvas>
+
+</div>
+</div>
+<script>
+
+
+	var barChartData = {
+		labels : ["MATEMATICAS","QUIMICA","BIOLOGIA","GEOGRAFIA","SOCIALES","ESTADISTICA","FISICA"],
+		datasets : [
+			{
+				fillColor : "#6b9dfa",
+				strokeColor : "#ffffff",
+				highlightFill: "#1864f2",
+				highlightStroke: "#ffffff",
+				data : [90,30,10,80,15,5,15]
+			},
+			{
+				fillColor : "#e9e225",
+				strokeColor : "#ffffff",
+				highlightFill : "#ee7f49",
+				highlightStroke : "#ffffff",
+				data : [40,50,70,40,85,55,15]
+			}
+		]
+
+	}	
+		
+
+var ctx3 = document.getElementById("chart-area3").getContext("2d");
+			
+window.myPie = new Chart(ctx3).Bar(barChartData, {responsive:true});
+
+</script>
+</body>
+</html>

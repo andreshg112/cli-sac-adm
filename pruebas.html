@@ -1,0 +1,19 @@
+<html ng-app="app">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body ng-controller="preguntasController as vm">
+        <select ng-model="vm.areaSeleccionada" ng-options="area.CODAREA as area.NOMAREA for area in vm.areas track by area.CODAREA">
+        </select>
+        <script type="text/javascript" src="scripts/jquery.min.js"></script>
+        <script type="text/javascript" src="scripts/angular.min.js"></script>
+        <script type="text/javascript" src="scripts/angular-route.min.js"></script>
+        <script type="text/javascript" src="Modules/appModule.js"></script>
+        <script type="text/javascript" src="Controllers/competenciasController.js"></script>
+        <script type="text/javascript" src="scripts/materialize.min.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/services.js"></script>
+    </body>
+</html>
