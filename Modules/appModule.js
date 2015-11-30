@@ -49,7 +49,7 @@ app.config(["$routeProvider",
                 })
                 .when('/Gestionar/Encabezados', {
                     templateUrl: 'view/registrarEncabezados.php',
-                    controller: 'competenciasController',
+                    controller: 'registroEncabezadosCtrl',
                     controllerAs: "vm"
                 })
                 .when('/Registro/Areas', {

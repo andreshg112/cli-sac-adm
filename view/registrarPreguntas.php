@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <h6>¿Con Encabezado?</h6>
-                    </div> 
+                    </div>
                     <div class="input-field col s6">
                         <div class="switch">
                             <label>
@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">library_books</i>
-                        <textarea class="materialize-textarea" ng-model="vm.pregunta.encabezado.titulo"></textarea>
+                        <textarea class="materialize-textarea" ng-model="vm.encabezadoSeleccionado.TITULO"></textarea>
                         <label>Encabezado</label>
                     </div>
                 </div>  
@@ -73,7 +73,8 @@
                 <!-- check-box  -->
                 <br><br>
                 <div class="right-align">
-                    <a ng-click="vm.mostrar(vm.pregunta); vm.registrar(vm.pregunta);" class="waves-effect waves-light btn" style="background-color: #ee6e73;">Guardar</a>
+                    <a ng-click="vm.mostrar(vm.pregunta);
+                                vm.registrar(vm.pregunta);" class="waves-effect waves-light btn" style="background-color: #ee6e73;">Guardar</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a class="waves-effect waves-light btn" style="background-color: #ee6e73;">Cancelar</a>
                 </div>
@@ -98,14 +99,14 @@
     <div id="modalAddEncabezados" class="modal">
         <div class="modal-content center-align">
             <center>
-                <div class="card-panel" style="width:100%;">                         
-                    <div class="row center" style="width:90%;">          
+                <div class="card-panel" style="width:100%;">                                           <div class="row center" style="width:90%;">          
                         <label><h2><b>Encabezados</b></h2></label>
                         <br>
+                        <!--
                         <table class="bordered">
                             <thead>
                                 <tr>     
-                                    </div></td><th>Filtro</th><td><input type="text"></td>
+                                    <th>Filtro</th><td><input type="text"></td>
                                     <td></td>
                                 </tr>
                             </thead>
@@ -146,6 +147,8 @@
                                 </tr>  
                             </tbody>
                         </table>   
+                        -->
+                        <div ui-grid="vm.gridOptions" ui-grid-pagination></div>
                     </div>
                     <br>              
                     <div class="modal-footer">

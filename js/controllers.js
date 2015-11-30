@@ -66,12 +66,14 @@ app.controller('gestionPreguntasCtrl', ['servicioPreguntas', 'servicioAreas', fu
         };
     }]);
 
-app.controller('registroPreguntasCtrl', ['servicioPreguntas', 'servicioAreas', function (servicioPreguntas, servicioAreas) {
+app.controller('registroPreguntasCtrl', ['servicioPreguntas', 'servicioAreas', 'servicioEncabezados', function (servicioPreguntas, servicioAreas, servicioEncabezados) {
         var vm = this;
         vm.pregunta = {
             opciones: []
         };
+        vm.encabezadoSeleccionado = {};
         vm.areas = [];
+        vm.encabezados = [];
         vm.opciones = [];
         vm.num_opciones = 4;
         vm.inputOpciones = [];
@@ -83,6 +85,81 @@ app.controller('registroPreguntasCtrl', ['servicioPreguntas', 'servicioAreas', f
         };
         vm.registrar = function (pregunta) {
             var promisePost = servicioPreguntas.post(pregunta);
+            vm.mostrar(promisePost);
+            promisePost.then(
+                    function (pl) {
+                        var respuesta = pl.data;
+                        console.log(respuesta);
+                        alert(respuesta.mensaje);
+                    },
+                    function (errorPl) {
+                        console.log('Error: ');
+                        console.log(errorPl);
+                    });
+        };
+        function cargarAreas() {
+            var promiseGet = servicioAreas.getAll();
+            promiseGet.then(
+                    function (pl) {
+                        console.log(pl);
+                        var respuesta = pl.data;
+                        vm.areas = respuesta.areas;
+                        //vm.gridOptions1.data = vm.areas;
+                    },
+                    function (errorPl) {
+                        console.log('Error: ');
+                        console.log(errorPl);
+                    }
+            );
+        }
+        cargarAreas();
+        vm.mostrar = function (algo) {
+            if (algo === undefined) {
+                algo = "";
+            }
+            console.log(algo);
+        };
+        function cargarEncabezados() {
+            var promiseGet = servicioEncabezados.getAll();
+            promiseGet.then(
+                    function (pl) {
+                        console.log(pl);
+                        var respuesta = pl.data;
+                        vm.encabezados = respuesta.encabezados;
+                        vm.gridOptions.data = vm.encabezados;
+                    },
+                    function (errorPl) {
+                        console.log('Error: ');
+                        console.log(errorPl);
+                    }
+            );
+        }
+        cargarEncabezados();
+        vm.gridOptions = {
+            paginationPageSizes: [10, 20, 30],
+            paginationPageSize: 10,
+            columnDefs: [
+                {name: "Título", field: "TITULO"},
+                {name: "Descripción", field: "DESCRIPCION"},
+                {
+                    name: "Selección",
+                    cellTemplate: '<button ng-click="vm.setIdEncabezado({{row.entity.ID_ENCABEZADO }})">Seleccionar</button>'
+                },
+            ],
+            data: vm.encabezados
+        };
+        vm.setIdEncabezado = function(id_encabezado) {
+            vm.pregunta.ID_ENCABEZADO = id_encabezado;
+        }
+    }]);
+
+app.controller('registroEncabezadosCtrl', ['servicioEncabezados', 'servicioAreas', function (servicioEncabezados, servicioAreas) {
+        var vm = this;
+        vm.encabezado = {
+        };
+        vm.areas = [];
+        vm.registrar = function (registro) {
+            var promisePost = servicioEncabezados.post(registro);
             vm.mostrar(promisePost);
             promisePost.then(
                     function (pl) {
