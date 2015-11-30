@@ -3,7 +3,7 @@
         <div class="card-panel" style="width:105%;">                         
             <div class="row center" style="width:100%;">     
                 <br>
-                <!--
+                
                 <table class="bordered">
                     <thead>
                         <tr><td></td><th>Áreas:</th><td>     
@@ -91,14 +91,14 @@
                         </tr>
                     </tbody>
                 </table>
-                -->
+                
                 <div ui-grid="vm.gridOptions" ui-grid-pagination></div>
                 <br>
                 <div class="right-align">
-                    <a class="waves-effect waves-light btn" href="#/Registro/Preguntas" ng-click="#" style="background-color: #ee6e73;">Registrar</a>
+                    <a class="waves-effect waves-light btn" href="#/Registro/Preguntas" style="background-color: #ee6e73;">Registrar</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a class="waves-effect waves-light btn" href="#"  ng-click="#" style="background-color: #ee6e73;">Cancelar</a>
-                </div> 
+                    <a class="waves-effect waves-light btn" href="#" style="background-color: #ee6e73;">Cancelar</a>
+                </div>
             </div>
         </div>
     </center>

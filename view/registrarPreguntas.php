@@ -95,9 +95,9 @@
                 <!-- check-box  -->                    
                 <br><br>
                 <div class="right-align">
-                    <a class="waves-effect waves-light btn" href="#" ng-click="#" style="background-color: #ee6e73;">Guardar</a>
+                    <a class="waves-effect waves-light btn" href="#" style="background-color: #ee6e73;">Guardar</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a class="waves-effect waves-light btn" href="#"  ng-click="#" style="background-color: #ee6e73;">Cancelar</a>
+                    <a class="waves-effect waves-light btn" href="#" style="background-color: #ee6e73;">Cancelar</a>
                 </div>           
             </div>
         </div>

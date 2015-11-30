@@ -1,39 +1,3 @@
-app.controller('ctrlConsultar', ["srvPlantilla", function (servicioPreguntas) {
-        console.log("entro");
-        var vm = this;
-        vm.preguntas = [];
-        function loadPreguntas() {
-            var promiseGet = servicioPreguntas.getAll();
-            promiseGet.then(
-                    function (pl) {
-                        console.log(pl);
-                        vm.preguntas = pl.data.result;
-                        vm.gridOptions1.data = vm.preguntas;
-                    },
-                    function (errorPl) {
-                        $log.error('failure loading Contactos', errorPl);
-                    }
-            );
-        }
-        loadPreguntas();
-        vm.gridOptions = {
-            paginationPageSizes: [10, 20, 30],
-            paginationPageSize: 10,
-            columnDefs: [
-                {field: "ENCABEZADO", displayName: "Enca"},
-                {name: "Enunc", field: "ENUNCIADO"},
-                {
-                    name: "IMAGEN_",
-                    field: 'image_url',
-                    cellTemplate: '<div class="ui-grid-cell-contents"><img src="http://www.google.com" /></div>'
-                },
-                {name: "IMAGEN"},
-                {name: "ENUNCIADO"},
-                {name: "IMAGEN_ENUNCIADO"}
-            ],
-            data: vm.preguntas
-        };
-    }]);
 app.controller('preguntasController', ['servicioPreguntas', 'servicioAreas', function (servicioPreguntas, servicioAreas) {
         console.log("preguntasController");
         var vm = this;
@@ -98,7 +62,7 @@ app.controller('preguntasController', ['servicioPreguntas', 'servicioAreas', fun
             paginationPageSizes: [10, 20, 30],
             paginationPageSize: 10,
             columnDefs: [
-                {name: "Encabezado", field: "ENCABEZADO"},
+                {name: "Encabezado", field: "encabezado.DESCRIPCION"},
                 {
                     name: "Imagen de encabezado",
                     cellTemplate: '<a href="">Ver imagen{{ row.entity.CODPREGUNTA }}</a>'

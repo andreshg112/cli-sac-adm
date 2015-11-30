@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-        <title>SaberApp_Cloud</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>SaberApp Cloud</title>
         <link rel="stylesheet" href="css/materialize.min.css">
         <link rel="stylesheet" href="css/estilos.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
