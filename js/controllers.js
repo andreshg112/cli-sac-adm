@@ -1,6 +1,9 @@
-app.controller('preguntasController', ['servicioPreguntas', 'servicioAreas', function (servicioPreguntas, servicioAreas) {
-        console.log("preguntasController");
+app.controller('gestionPreguntasCtrl', ['servicioPreguntas', 'servicioAreas', function (servicioPreguntas, servicioAreas) {
+        console.log("gestionPreguntasCtrl");
         var vm = this;
+        vm.preguntas = [];
+        vm.areas = [];
+        vm.areaSeleccionada = null;
         vm.pregunta = {};
         vm.mostrar = function (algo) {
             if (algo === undefined) {
@@ -8,30 +11,14 @@ app.controller('preguntasController', ['servicioPreguntas', 'servicioAreas', fun
             }
             console.log(algo);
         };
-        vm.registrar = function (pregunta) {
-            var promisePost = servicioPreguntas.post(pregunta);
-            vm.mostrar(promisePost);
-            promisePost.then(
-                    function (pl) {
-                        var respuesta = pl.data;
-                        console.log(respuesta);
-                        alert(respuesta.mensaje);
-                    },
-                    function (errorPl) {
-                        console.log('Error: ');
-                        console.log(errorPl);
-                    });
-        };
-        vm.preguntas = [];
-        vm.areaSeleccionada = null;
         function cargarAreas() {
             var promiseGet = servicioAreas.getAll();
             promiseGet.then(
                     function (pl) {
                         console.log(pl);
                         var respuesta = pl.data;
-                        vm.preguntas = respuesta.areas;
-                        console.log(vm.preguntas);
+                        vm.areas = respuesta.areas;
+                        console.log(vm.areas);
                         //vm.gridOptions1.data = vm.areas;
                     },
                     function (errorPl) {
@@ -41,7 +28,6 @@ app.controller('preguntasController', ['servicioPreguntas', 'servicioAreas', fun
             );
         }
         cargarAreas();
-        vm.preguntas = [];
         function loadPreguntas() {
             var promiseGet = servicioPreguntas.getAll();
             promiseGet.then(
@@ -80,11 +66,55 @@ app.controller('preguntasController', ['servicioPreguntas', 'servicioAreas', fun
         };
     }]);
 
-function transformValue(id) {
-    console.log("tran", id);
-    if (id % 2 === 0) {
-        return '<a href="">Ver opciones {{row.entity.CODPREGUNTA}}</a>';
-    } else {
-        return '<a href="">Sin</a>';
-    }
-}
+app.controller('registroPreguntasCtrl', ['servicioPreguntas', 'servicioAreas', function (servicioPreguntas, servicioAreas) {
+        var vm = this;
+        vm.pregunta = {
+            opciones: []
+        };
+        vm.areas = [];
+        vm.opciones = [];
+        vm.num_opciones = 4;
+        vm.inputOpciones = [];
+        vm.variarOpciones = function () {
+            vm.inputOpciones = [];
+            for (var i = 1; i <= vm.num_opciones; i++) {
+                vm.inputOpciones.push(i);
+            }
+        };
+        vm.registrar = function (pregunta) {
+            var promisePost = servicioPreguntas.post(pregunta);
+            vm.mostrar(promisePost);
+            promisePost.then(
+                    function (pl) {
+                        var respuesta = pl.data;
+                        console.log(respuesta);
+                        alert(respuesta.mensaje);
+                    },
+                    function (errorPl) {
+                        console.log('Error: ');
+                        console.log(errorPl);
+                    });
+        };
+        function cargarAreas() {
+            var promiseGet = servicioAreas.getAll();
+            promiseGet.then(
+                    function (pl) {
+                        console.log(pl);
+                        var respuesta = pl.data;
+                        vm.areas = respuesta.areas;
+                        //vm.gridOptions1.data = vm.areas;
+                    },
+                    function (errorPl) {
+                        console.log('Error: ');
+                        console.log(errorPl);
+                    }
+            );
+        }
+        cargarAreas();
+        vm.mostrar = function (algo) {
+            if (algo === undefined) {
+                algo = "";
+            }
+            console.log(algo);
+        };
+    }]);

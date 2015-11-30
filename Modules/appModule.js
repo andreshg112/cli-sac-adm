@@ -9,12 +9,12 @@ app.config(["$routeProvider",
                 })
                 .when('/Gestionar/Preguntas', {
                     templateUrl: 'view/gestionar.php',
-                    controller: 'preguntasController',
+                    controller: 'gestionPreguntasCtrl',
                     controllerAs: "vm"
                 })
                 .when('/Registro/Preguntas', {
                     templateUrl: 'view/registrarPreguntas.php',
-                    controller: 'preguntasController',
+                    controller: 'registroPreguntasCtrl',
                     controllerAs: "vm"
                 })
                 .when('/Gestionar/Usuarios', {

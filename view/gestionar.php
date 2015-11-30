@@ -3,11 +3,11 @@
         <div class="card-panel" style="width:105%;">                         
             <div class="row center" style="width:100%;">     
                 <br>
-                
+
                 <table class="bordered">
                     <thead>
                         <tr><td></td><th>Áreas:</th><td>     
-                                <select ng-model="areaSeleccionada" ng-options="area as area.nomarea for area in areas track by area.CODAREA">
+                                <select ng-model="vm.areaSeleccionada" ng-options="area.CODAREA as area.NOMAREA for area in vm.areas track by area.CODAREA">
                                 </select>
                             </td><th>Filtro</th><td><input type="text"></td></tr>
                     </thead>
@@ -91,7 +91,7 @@
                         </tr>
                     </tbody>
                 </table>
-                
+
                 <div ui-grid="vm.gridOptions" ui-grid-pagination></div>
                 <br>
                 <div class="right-align">
@@ -161,13 +161,13 @@
     </div>
 </div>
 <script type="text/javascript">
-        $(document).ready(function () {
-            $('.modal-trigger').leanModal();
-            $('select').material_select();
-        });
+            $(document).ready(function () {
+                $('.modal-trigger').leanModal();
+                $('select').material_select();
+            });
 </script>
 <script>
-        function mostrarmodal1() {
-            $("#modalAddImagenes").fadeOut();
-        }
+            function mostrarmodal1() {
+                $("#modalAddImagenes").fadeOut();
+            }
 </script>

@@ -23,10 +23,10 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">library_books</i>
-                        <textarea class="materialize-textarea" ng-model="vm.pregunta.encabezado"></textarea>
+                        <textarea class="materialize-textarea" ng-model="vm.pregunta.encabezado.titulo"></textarea>
                         <label>Encabezado</label>
                     </div>
-                </div>      
+                </div>  
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">library_books</i>
@@ -37,68 +37,46 @@
                 <label>Área:</label>
                 <div class="row">
                     <div class="input-field col s6">
-                        <select ng-model="vm.areaSeleccionada" ng-options="area.CODAREA as area.NOMAREA for area in vm.areas">
+                        <select class="browser-default" ng-model="vm.pregunta.codarea" ng-options="area.CODAREA as area.NOMAREA for area in vm.areas track by area.CODAREA">
                         </select>
                     </div>
                 </div>
                 <label>Tipo Opciones</label>
                 <div class="row">              
                     <div class="input-field col s6">
-                        <select name="TipoEncabezado">
-                            <option value="texto" disabled selected>Texto</option>                            <option value="imagen"> Imagen</option>                     
-                        </select>       
-                    </div>             
+                        <select class="browser-default" ng-model="vm.pregunta.tipo_opciones">
+                            <option value="TEXTO" disabled selected>Texto</option>
+                            <option value="IMAGEN"> Imagen</option>                                        </select>       
+                    </div>
                     <div class="input-field col s6">                
-                        <select name="TipoEncabezado">
-                            <option value="0" disabled selected>Seleccionar Cantidad</option>
-                            <option value="uno"> 1 </option>
-                            <option value="dos"> 2 </option>
-                            <option value="tres"> 3 </option>
-                            <option value="cuatro"> 4 </option>
-                            <option value="cinco"> 5 </option>
-                            <option value="sexto"> 6 </option>
-                            <option value="siete"> 7 </option>
-                        </select>       
+                        <select class="browser-default" ng-model="vm.num_opciones" ng-change="vm.variarOpciones();">
+                            <option ng-repeat="option in [3, 4, 5, 6, 7]">{{option}}</option>
+                        </select>
                     </div>
                 </div>
                 <br><br>
-                <div class="row">
+                <div class="row" ng-repeat="opcion in vm.inputOpciones">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">library_books</i>
-                        <input  id="first_name" type="text" >
-                        <label>Opcion</label>       
-                    </div>             
-                    <div class="input-field col s6">                
-                        <form action="#">
-                            <p>
-                                <input type="checkbox" id="test5" />
-                                <label for="test5">.</label>
-                            </p>
-                        </form>      
+                        <textarea type="text" ng-model="vm.pregunta.opciones[$index].descripcion"></textarea>
+                        <label>Opción {{opcion}}</label>
                     </div>
-                </div>
-                <div class="row">              
                     <div class="input-field col s6">
-                        <i class="material-icons prefix">library_books</i>
-                        <input  id="first_name1" type="text" >
-                        <label>Opcion</label>       
-                    </div>             
-                    <div class="input-field col s6">                
                         <form action="#">
                             <p>
-                                <input type="checkbox" id="test6" />
-                                <label for="test6">.</label>
+                                <input type="checkbox" id="check{{opcion}}" ng-model="vm.pregunta.opciones[$index].validez" ng-true-value="'CORRECTA'" ng-false-value="'INCORRECTA'"/>
+                                <label for="check{{opcion}}">.</label>
                             </p>
-                        </form>      
+                        </form>
                     </div>
                 </div>
-                <!-- check-box  -->                    
+                <!-- check-box  -->
                 <br><br>
                 <div class="right-align">
-                    <a class="waves-effect waves-light btn" href="#" style="background-color: #ee6e73;">Guardar</a>
+                    <a ng-click="vm.mostrar(vm.pregunta); vm.registrar(vm.pregunta);" class="waves-effect waves-light btn" style="background-color: #ee6e73;">Guardar</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a class="waves-effect waves-light btn" href="#" style="background-color: #ee6e73;">Cancelar</a>
-                </div>           
+                    <a class="waves-effect waves-light btn" style="background-color: #ee6e73;">Cancelar</a>
+                </div>
             </div>
         </div>
     </center>
@@ -182,22 +160,22 @@
     </div>
 </div>
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('select').material_select();
-    });
+            $(document).ready(function () {
+                $('select').material_select();
+            });
 </script>
 <script>
-    function mostrarmodal1() {
-        $("#modalAddEncabezados").fadeOut();
-    }
+            function mostrarmodal1() {
+                $("#modalAddEncabezados").fadeOut();
+            }
 </script>
 <script>
-    function mostrarModalRegistro() {
-        if ($("#switch").is(':checked')) {
-            $("#modalAddEncabezados").openModal();
-        } else {
-            $("#modalAddEncabezados").closeModal();
-        }
-        ;
-    }
+            function mostrarModalRegistro() {
+                if ($("#switch").is(':checked')) {
+                    $("#modalAddEncabezados").openModal();
+                } else {
+                    $("#modalAddEncabezados").closeModal();
+                }
+                ;
+            }
 </script>

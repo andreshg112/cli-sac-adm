@@ -4,16 +4,23 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body ng-controller="preguntasController as vm">
+    <body ng-controller="gestionPreguntasCtrl as vm">
         <select ng-model="vm.areaSeleccionada" ng-options="area.CODAREA as area.NOMAREA for area in vm.areas track by area.CODAREA">
         </select>
+        
         <script type="text/javascript" src="scripts/jquery.min.js"></script>
         <script type="text/javascript" src="scripts/angular.min.js"></script>
         <script type="text/javascript" src="scripts/angular-route.min.js"></script>
         <script type="text/javascript" src="Modules/appModule.js"></script>
         <script type="text/javascript" src="Controllers/competenciasController.js"></script>
-        <script type="text/javascript" src="scripts/materialize.min.js"></script>
         <script src="js/controllers.js"></script>
         <script src="js/services.js"></script>
+        <script src="libs/angularjs/angular-touch.js"></script>
+        <script src="libs/angularjs/angular-animate.js"></script>
+        <script src="libs/angularjs/angular-route.js"></script>
+        <script src="libs/ui-grid/csv.js"></script>
+        <!--<script src="libs/ui-grid/pdfmake.js"></script>-->
+        <script src="libs/ui-grid/vfs_fonts.js"></script>
+        <script src="libs/ui-grid/ui-grid.js"></script>
     </body>
 </html>
