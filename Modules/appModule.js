@@ -24,7 +24,7 @@ app.config(["$routeProvider",
                 })
                 .when('/Gestionar/Area', {
                     templateUrl: 'view/GestionarArea.php',
-                    controller: 'competenciasController',
+                    controller: 'gestionarAreasCtrl',
                     controllerAs: "vm"
                 })
                 .when('/Gestionar/Resultados_generales', {
@@ -54,7 +54,7 @@ app.config(["$routeProvider",
                 })
                 .when('/Registro/Areas', {
                     templateUrl: 'view/RegistrarAreas.php',
-                    controller: 'competenciasController',
+                    controller: 'registroAreasCtrl',
                     controllerAs: "vm"
                 });
     }]);

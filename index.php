@@ -57,7 +57,7 @@
         <script type="text/javascript" src="scripts/materialize.min.js"></script>
         <script type="text/javascript" src="Modules/appModule.js"></script>
         <script type="text/javascript" src="Controllers/competenciasController.js"></script>
-        <script src="js/controllers.js"></script>
+        <script src="js/controllers.js"></script>        
         <script src="js/services.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {

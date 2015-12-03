@@ -148,7 +148,7 @@ app.controller('registroPreguntasCtrl', ['servicioPreguntas', 'servicioAreas', '
             ],
             data: vm.encabezados
         };
-        vm.setIdEncabezado = function(id_encabezado) {
+        vm.setIdEncabezado = function (id_encabezado) {
             vm.pregunta.ID_ENCABEZADO = id_encabezado;
         }
     }]);
@@ -188,6 +188,56 @@ app.controller('registroEncabezadosCtrl', ['servicioEncabezados', 'servicioAreas
             );
         }
         cargarAreas();
+        vm.mostrar = function (algo) {
+            if (algo === undefined) {
+                algo = "";
+            }
+            console.log(algo);
+        };
+    }]);
+
+app.controller('gestionarAreasCtrl', ['servicioAreas', function (servicioAreas) {
+        console.log("gestionAreasCtrl");
+        var vm = this;
+        vm.areas = [];
+        function cargarAreas() {
+            var promiseGet = servicioAreas.getAll();
+            promiseGet.then(
+                    function (pl) {
+                        console.log(pl);
+                        var respuesta = pl.data;
+                        vm.areas = respuesta.areas;
+                        console.log(vm.areas);
+                        //vm.gridOptions1.data = vm.areas;
+                    },
+                    function (errorPl) {
+                        console.log('Error: ');
+                        console.log(errorPl);
+                    }
+            );
+        }
+        cargarAreas();
+    }]);
+
+app.controller('registroAreasCtrl', ['servicioAreas', function (servicioAreas) {
+        var vm = this;
+        vm.areas = {
+        };
+        vm.NOMAREA = [];
+        vm.registrar = function (areas) {
+            var promisePost = servicioAreas.post(areas);
+            vm.mostrar(promisePost);
+            promisePost.then(
+                    function (pl) {
+                        var respuesta = pl.data;
+                        console.log(respuesta);
+                        alert(respuesta.mensaje);
+                    },
+                    function (errorPl) {
+                        console.log('Error: ');
+                        console.log(errorPl);
+                    });
+        };
         vm.mostrar = function (algo) {
             if (algo === undefined) {
                 algo = "";
