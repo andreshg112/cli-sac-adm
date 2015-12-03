@@ -8,36 +8,55 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="libs/ui-grid/ui-grid.css" type="text/css"/>
     </head>
-    <body>   
+    <body>  
+
         <header>
-            <nav class="top-nav">
-                <div class="container1">
-                    <div class="nav-wrapper">
-                        <center>
-                            <a class="title center-align" style="color: #fff;" >
-                                <FONT FACE="impact" SIZE=6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SaberApp
-                                </FONT>
-                            </a>
-                        </center>
-                    </div>
+            <nav>
+                <div class="nav-wrapper">                   
+                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                    <header>
+                        <nav class="top-nav">
+                            <div class="container1">
+                                <div class="nav-wrapper">
+                                    <center>
+                                        <a class="title center-align" style="color: #fff;" >
+                                            <FONT FACE="impact" SIZE=6>SaberApp
+                                            </FONT>
+                                        </a>
+                                    </center>
+                                </div>
+                            </div>
+                        </nav>
+
+                        <ul id="nav-mobile" class="side-nav fixed" style="width: 240px;">
+                            <li class="logo"><a id="logo-container" href="#/Gestionar/Principal" class="brand-logo">
+                                    <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg"><img src="saberapp.png" id="img" class="img"></object></a>
+                            </li>
+                            <br><br><br>
+
+                            <li class="bold"><a href="#/Gestionar/Preguntas" class="waves-effect waves-teal">Gestionar Preguntas</a></li>
+                            <li class="bold"><a href="#/Gestionar/Usuarios" class="waves-effect waves-teal">Gestionar Usuarios</a></li>
+                            <li class="bold"><a href="#/Gestionar/Area" class="waves-effect waves-teal">Gestionar &Aacute;rea</a></li>
+                            <li class="bold"><a href="#/Gestionar/Resultados_generales" class="waves-effect waves-teal">Resultados Generales</a></li>
+                            <li class="bold"><a  href="#/Gestionar/Resultados_especificos" class="waves-effect waves-teal">Resultados Especificos</a></li>
+                            <li class="bold"><a href="#/Gestionar/Preguntasimu" class="waves-effect waves-teal">Preguntas</a></li>
+                        </ul>
+                    </header>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li class="logo"><a id="logo-container" href="#/Gestionar/Principal" class="brand-logo">
+                                <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg"><img src="saberapp.png" id="img" class="img"></object></a>
+                        </li>
+                        <br> <br>
+                        <li class="bold"><a href="#/Gestionar/Preguntas" class="waves-effect waves-teal">Gestionar Preguntas</a></li>
+                        <li class="bold"><a href="#/Gestionar/Usuarios" class="waves-effect waves-teal">Gestionar Usuarios</a></li>
+                        <li class="bold"><a href="#/Gestionar/Area" class="waves-effect waves-teal">Gestionar &Aacute;rea</a></li>
+                        <li class="bold"><a href="#/Gestionar/Resultados_generales" class="waves-effect waves-teal">Resultados Generales</a></li>
+                        <li class="bold"><a  href="#/Gestionar/Resultados_especificos" class="waves-effect waves-teal">Resultados Especificos</a></li>
+                        <li class="bold"><a href="#/Gestionar/Preguntasimu" class="waves-effect waves-teal">Preguntas</a></li>
+                    </ul>
                 </div>
             </nav>
-            <div class="container"><a  data-activates="nav-mobile"  class="button-collapse top-nav waves-effect waves-light circle hide-on-large-only"><i class="mdi-navigation-menu"></i></a></div>
-            <ul id="nav-mobile" class="side-nav fixed" style="width: 240px;">
-                <li class="logo"><a id="logo-container" href="#/Gestionar/Principal" class="brand-logo">
-                        <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg"><img src="saberapp.png" id="img" class="img"></object></a>
-                </li>
-                <br><br><br><br>
-
-                <li class="bold"><a href="#/Gestionar/Preguntas" class="waves-effect waves-teal">Gestionar Preguntas</a></li>
-                <li class="bold"><a href="#/Gestionar/Usuarios" class="waves-effect waves-teal">Gestionar Usuarios</a></li>
-                <li class="bold"><a href="#/Gestionar/Area" class="waves-effect waves-teal">Gestionar &Aacute;rea</a></li>
-                <li class="bold"><a href="#/Gestionar/Resultados_generales" class="waves-effect waves-teal">Resultados Generales</a></li>
-                <li class="bold"><a  href="#/Gestionar/Resultados_especificos" class="waves-effect waves-teal">Resultados Especificos</a></li>
-                <li class="bold"><a href="#/Gestionar/Preguntasimu" class="waves-effect waves-teal">Preguntas</a></li>
-            </ul>
         </header>
-
         <br><br><br><br>
         <main><div class="container" id="container2">
                 <div class="row">
@@ -64,6 +83,7 @@
                 // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
                 $('.modal-trigger').leanModal();
                 $('select').material_select();
+                $(".button-collapse").sideNav();
             });
         </script>
         <script src="libs/angularjs/angular-touch.js"></script>
