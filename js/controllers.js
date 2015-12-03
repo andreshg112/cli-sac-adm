@@ -197,7 +197,7 @@ app.controller('registroEncabezadosCtrl', ['servicioEncabezados', 'servicioAreas
     }]);
 
 app.controller('gestionarAreasCtrl', ['servicioAreas', function (servicioAreas) {
-        console.log("gestionAreasCtrl");
+        console.log("gestionarAreasCtrl");
         var vm = this;
         vm.areas = [];
         function cargarAreas() {
@@ -244,4 +244,28 @@ app.controller('registroAreasCtrl', ['servicioAreas', function (servicioAreas) {
             }
             console.log(algo);
         };
+    }]);
+
+
+app.controller('gestionarUsuariosCtrl', ['servicioUsuarios', function (servicioUsuarios) {
+        console.log("gestionarUsuariosCtrl");
+        var vm = this;
+        vm.usuarios = [];
+        function cargarUsuarios() {
+            var promiseGet = servicioUsuarios.getAll();
+            promiseGet.then(
+                    function (pl) {
+                        console.log(pl);
+                        var respuesta = pl.data;
+                        vm.usuarios = respuesta.usuarios;
+                        console.log(vm.usuarios);
+                        //vm.gridOptions1.data = vm.areas;
+                    },
+                    function (errorPl) {
+                        console.log('Error: ');
+                        console.log(errorPl);
+                    }
+            );
+        }
+        cargarUsuarios();
     }]);

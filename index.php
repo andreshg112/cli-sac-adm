@@ -31,7 +31,7 @@
 
                 <li class="bold"><a href="#/Gestionar/Preguntas" class="waves-effect waves-teal">Gestionar Preguntas</a></li>
                 <li class="bold"><a href="#/Gestionar/Usuarios" class="waves-effect waves-teal">Gestionar Usuarios</a></li>
-                <li class="bold"><a href="#/Gestionar/Area" class="waves-effect waves-teal">Gestionar �rea</a></li>
+                <li class="bold"><a href="#/Gestionar/Area" class="waves-effect waves-teal">Gestionar &Aacute;rea</a></li>
                 <li class="bold"><a href="#/Gestionar/Resultados_generales" class="waves-effect waves-teal">Resultados Generales</a></li>
                 <li class="bold"><a  href="#/Gestionar/Resultados_especificos" class="waves-effect waves-teal">Resultados Especificos</a></li>
                 <li class="bold"><a href="#/Gestionar/Preguntasimu" class="waves-effect waves-teal">Preguntas</a></li>

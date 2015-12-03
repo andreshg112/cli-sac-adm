@@ -19,12 +19,17 @@ app.config(["$routeProvider",
                 })
                 .when('/Gestionar/Usuarios', {
                     templateUrl: 'view/GestionarUsuarios.php',
-                    controller: 'competenciasController',
+                    controller: 'gestionarUsuariosCtrl',
                     controllerAs: "vm"
                 })
                 .when('/Gestionar/Area', {
                     templateUrl: 'view/GestionarArea.php',
                     controller: 'gestionarAreasCtrl',
+                    controllerAs: "vm"
+                })
+                .when('/Registro/Areas', {
+                    templateUrl: 'view/RegistrarAreas.php',
+                    controller: 'registroAreasCtrl',
                     controllerAs: "vm"
                 })
                 .when('/Gestionar/Resultados_generales', {
@@ -50,11 +55,6 @@ app.config(["$routeProvider",
                 .when('/Gestionar/Encabezados', {
                     templateUrl: 'view/registrarEncabezados.php',
                     controller: 'registroEncabezadosCtrl',
-                    controllerAs: "vm"
-                })
-                .when('/Registro/Areas', {
-                    templateUrl: 'view/RegistrarAreas.php',
-                    controller: 'registroAreasCtrl',
                     controllerAs: "vm"
                 });
     }]);
