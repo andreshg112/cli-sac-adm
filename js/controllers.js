@@ -254,7 +254,7 @@ app.controller('gestionarUsuariosCtrl', ['servicioUsuarios', function (servicioU
         vm.usuarios = [];
         vm.filtro = "";
         vm.cargarUsuarios = function () {
-            var promiseGet = servicioUsuarios.getAll();
+            var promiseGet = servicioUsuarios.getAll(vm.filtro);
             promiseGet.then(
                     function (pl) {
                         console.log(pl);
@@ -269,5 +269,5 @@ app.controller('gestionarUsuariosCtrl', ['servicioUsuarios', function (servicioU
                     }
             );
         }
-        cargarUsuarios();
+        vm.cargarUsuarios();
     }]);
