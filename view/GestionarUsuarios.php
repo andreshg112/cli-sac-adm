@@ -30,7 +30,7 @@
                                 <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
                             <td>
                                 {{usuario.EMAIL}}
-                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
+                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;"></a>
                             </td>
                             <td>
                                 {{usuario.CONTRASENIA}}

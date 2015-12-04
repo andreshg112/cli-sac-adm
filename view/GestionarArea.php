@@ -3,18 +3,7 @@
         <div class="card-panel" style="width:100%;">                         
             <div class="row center" style="width:100%;">      
                 <br><br>  
-                <table class="bordered">
-                    <thead>
-                        <tr>     
-                            <td>
-                                 <div class="row">
-                                        <div class="input-field col s6">   
-                                            <input ng-model="vm.filtro" ng-change="vm.cargarAreas();" id="first_name" type="text" class="validate">
-                                            <label>Areas</label>
-                                        </div>
-                                    </div>
-                        </tr>
-                    </thead>
+                <table class="bordered">                   
                     <thead>
                         <tr>
                             <th data-field="id">&Aacute;rea</th>                            

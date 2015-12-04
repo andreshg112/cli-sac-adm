@@ -23,19 +23,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr ng-repeat="pregunta in vm.preguntas">
                             <td>
-                                Este es un Encabezado
+                                {{vm.pregunta.encabezado}}
                                 <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
                             </td>
                             <td><a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Imagen</a></td>
                             <td>
-                                Enuciado
+                                  {{vm.pregunta.enunciado}}
                                 <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
                             </td>
                             <td><a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Imagen_Enunciado</a></td>
                             <td>
-                                opciones
+                                  {{vm.pregunta.opciones}}
                                 <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
                             </td>
                             <td>            
@@ -44,55 +44,11 @@
                             <td>
                                 <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">clear</i></a>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Este es un Encabezado
-                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
-                            </td>
-                            <td><a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Imagen</a></td>
-                            <td>
-                                Enuciado
-                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
-                            </td>
-                            <td><a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Imagen_Enunciado</a></td>
-                            <td>
-                                opciones
-                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
-                            </td>
-                            <td>            
-                                <a class="btn-floating btn-large waves-effect waves-light red"><i class="large material-icons">edit</i></a>                     
-                            </td>
-                            <td>
-                                <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">clear</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Este es un Encabezado
-                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
-                            </td>
-                            <td><a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Imagen</a></td>
-                            <td>
-                                Enuciado
-                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
-                            </td>
-                            <td><a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Imagen_Enunciado</a></td>
-                            <td>
-                                opciones
-                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
-                            </td>
-                            <td>            
-                                <a class="btn-floating btn-large waves-effect waves-light red"><i class="large material-icons">edit</i></a>                     
-                            </td>
-                            <td>
-                                <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">clear</i></a>
-                            </td>
-                        </tr>
+                        </tr>               
                     </tbody>
                 </table>
 
-                <div ui-grid="vm.gridOptions" ui-grid-pagination></div>
+                <!--div ui-grid="vm.gridOptions" ui-grid-pagination></div-->
                 <br>
                 <div class="right-align">
                     <a class="waves-effect waves-light btn" href="#/Registro/Preguntas" style="background-color: #ee6e73;">Registrar</a>
