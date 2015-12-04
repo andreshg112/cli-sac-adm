@@ -200,8 +200,8 @@ app.controller('gestionarAreasCtrl', ['servicioAreas', function (servicioAreas) 
         console.log("gestionarAreasCtrl");
         var vm = this;
         vm.areas = [];
-         vm.filtro = "";
-         function cargarAreas() {            
+        vm.filtro = "";
+        function cargarAreas() {
             var promiseGet = servicioAreas.getAll(vm.filtro);
             promiseGet.then(
                     function (pl) {
@@ -252,7 +252,8 @@ app.controller('gestionarUsuariosCtrl', ['servicioUsuarios', function (servicioU
         console.log("gestionarUsuariosCtrl");
         var vm = this;
         vm.usuarios = [];
-        function cargarUsuarios() {
+        vm.filtro = "";
+        vm.cargarUsuarios = function () {
             var promiseGet = servicioUsuarios.getAll();
             promiseGet.then(
                     function (pl) {
