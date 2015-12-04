@@ -200,8 +200,9 @@ app.controller('gestionarAreasCtrl', ['servicioAreas', function (servicioAreas) 
         console.log("gestionarAreasCtrl");
         var vm = this;
         vm.areas = [];
-        function cargarAreas() {
-            var promiseGet = servicioAreas.getAll();
+         vm.filtro = "";
+         function cargarAreas() {            
+            var promiseGet = servicioAreas.getAll(vm.filtro);
             promiseGet.then(
                     function (pl) {
                         console.log(pl);

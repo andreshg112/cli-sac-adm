@@ -7,10 +7,12 @@
                     <thead>
                         <tr>     
                             <td>
-                                <div class="row">
-                                    <div class="col s2">Filtro</div>
-                                    <div class="col s6"><input type="text"></div>
-                                </div>
+                                 <div class="row">
+                                        <div class="input-field col s6">   
+                                            <input ng-model="vm.filtro" ng-change="vm.cargarAreas();" id="first_name" type="text" class="validate">
+                                            <label>Areas</label>
+                                        </div>
+                                    </div>
                         </tr>
                     </thead>
                     <thead>
@@ -21,7 +23,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="area in vm.areas">
+                        <tr ng-repeat="area in vm.areas | filter:filtro">
                             <td>{{area.NOMAREA}}</td>                  
                             <td>            
                                 <a class="btn-floating btn-large waves-effect waves-light red"><i class="large material-icons">edit</i></a>                     

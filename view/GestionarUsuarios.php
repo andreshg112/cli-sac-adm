@@ -6,7 +6,7 @@
                 <table class="bordered">
                     <thead>
                         <tr><td></td>     
-                            </div></td><th>Filtro</th><td><input type="text"></td></tr>
+                            <th>Filtro:</th><td><input type="text"></td></tr>
                     </thead>
                     <thead>
                         <tr>
@@ -38,8 +38,8 @@
                             <td>
                                 {{usuario.SEXO}}        
                             </td>
-                            <td>            
-                                <a class="btn-floating btn-large waves-effect waves-light red"><i class="large material-icons">edit</i></a>                     
+                            <td>                                  
+                                <a class=" modal-trigger btn-floating btn-large waves-effect waves-light red"  ng-click="mostrarmodalusuarios()"><i class="large material-icons">edit</i></a>                     
                             </td>
                             <td>
                                 <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">clear</i></a>
@@ -109,17 +109,89 @@
             <a  class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
     </div>
+
+    <!-- esta es la modal que estoy haciendo-->
+    <!-- Modal Trigger -->
+    <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Modal</a>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <center>
+                <div class="card-panel" style="width:70%;">                         
+                    <div class="row center" style="width:80%;">
+                        <br>
+                        <label><h2><b>Registro</b></h2></label>
+                        <br><br>					
+                        <form action="" > 					      
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">library_books</i>
+                                    <input  id="first_name" type="text" class="validate">
+                                    <label>Nombres</label>
+                                </div>
+                            </div>  
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">library_books</i>
+                                    <input  id="first_name" type="text" class="validate">
+                                    <label>Apellidos</label>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">library_books</i>
+                                    <input  id="first_name" type="text" class="validate">
+                                    <label>Email</label>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">library_books</i>
+                                    <input id="password" type="password" class="validate" ng-model="password">        
+                                    <label>Password</label>
+                                </div>
+                            </div>  
+                            
+                            <div class="left-align"> 	
+                                <label>Sexo:</label>
+                            </div>											
+                            <div class="row">						
+                                <div class="input-field col s6">
+                                    <select name="TipoEncabezado">
+                                        <option value="0" disabled selected>Seleccionar sexo</option>
+                                        <option value="areaUno">M </option>
+                                        <option value="areaDos">F</option>        
+                                    </select>       
+                                </div>                                 
+                        </form>
+                    </div>
+                    <br><br>					
+                </div>
+            </center>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Guardar</a>
+        </div>
+    </div>
+
+    <!--aqui termina la modal que estoy haciendo-->
 </div>
 <script type="text/javascript">
-            $(document).ready(function () {
-                $('.modal-trigger').leanModal();
-                $('select').material_select();
-            });
+                $(document).ready(function () {
+            $('.modal-trigger').leanModal();
+            $('select').material_select();
+        });
 </script>
 <script>
-            function mostrarmodal1() {
-                $("#modalAddImagenes").fadeOut();
-            }
+        function mostrarmodal1() {
+            $("#modalAddImagenes").fadeOut();
+        }
+</script>
+<script>
+        function mostrarmodalusuarios() {
+            $("#modalUsuarios").openModal();
+        }
 </script>
 
 
