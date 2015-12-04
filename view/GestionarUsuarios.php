@@ -6,7 +6,7 @@
                 <table class="bordered">
                     <thead>
                         <tr><td></td>     
-                            <th>Filtro:</th><td><input type="text"></td></tr>
+                            <th>Filtro:</th><td><input type="text" ng-model="vm.filtro" ng-change="vm.cargarUsuarios()"></td></tr>
                     </thead>
                     <thead>
                         <tr>

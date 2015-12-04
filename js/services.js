@@ -105,7 +105,7 @@ app.service("servicioUsuarios", function ($http) {
         return req;
     };
     this.getAll = function () {
-        var req = $http.get(uri);
+        var req = $http.get(uri + "?limit=10&orden&filtro=" + filtro);
         return req;
     };
     this.post = function (registro) {
