@@ -52,16 +52,17 @@ app.service("servicioAreas", function ($http) {
         });
         return req;
     };
-    this.put = function (id, contact) {
-        /*var request = $http({
-         method: "put",
-         url: uri+'/api/contactos/'+ id,
-         data: contact
-         });*/
-        var url = uri + "/" + id;
-        var request = $http.put(url, contact);
+    this.put = function (id, registro) {
+        var request = $http({
+            method: 'PUT',
+            url: uri + "/" + id,
+            headers: {
+                'Content-Type': "application/x-www-form-urlencoded"
+            },
+            data: registro
+        });
         return request;
-    };
+    };       
 });
 
 app.service("servicioEncabezados", function ($http) {
@@ -119,14 +120,17 @@ app.service("servicioUsuarios", function ($http) {
         });
         return req;
     };
-    this.put = function (id, contact) {
-        /*var request = $http({
-         method: "put",
-         url: uri+'/api/contactos/'+ id,
-         data: contact
-         });*/
+    this.put = function (id, registro) {
+        var req = $http({
+            method: 'PUT',
+            url: uri,
+            headers: {
+                'Content-Type': "application/x-www-form-urlencoded"
+            },
+            data: registro
+        });
         var url = uri + "/" + id;
-        var request = $http.put(url, contact);
+        var request = $http.put(url, registro);
         return request;
     };
 });

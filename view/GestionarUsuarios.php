@@ -158,10 +158,10 @@
                             </div>											
                             <div class="row">						
                                 <div class="input-field col s6">
-                                    <select name="TipoEncabezado">
+                                    <select name="sexo">
                                         <option value="0" disabled selected>Seleccionar sexo</option>
-                                        <option value="areaUno">M </option>
-                                        <option value="areaDos">F</option>        
+                                        <option value="m">M </option>
+                                        <option value="f">F</option>        
                                     </select>       
                                 </div>                                 
                         </form>

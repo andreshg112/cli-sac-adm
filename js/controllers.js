@@ -200,7 +200,7 @@ app.controller('gestionarAreasCtrl', ['servicioAreas', function (servicioAreas) 
         console.log("gestionarAreasCtrl");
         var vm = this;
         vm.areas = [];
-        vm.filtro = "";
+        vm.filtro = "";     
         function cargarAreas() {
             var promiseGet = servicioAreas.getAll(vm.filtro);
             promiseGet.then(
@@ -217,7 +217,7 @@ app.controller('gestionarAreasCtrl', ['servicioAreas', function (servicioAreas) 
                     }
             );
         }
-        cargarAreas();
+        cargarAreas();       
     }]);
 
 app.controller('registroAreasCtrl', ['servicioAreas', function (servicioAreas) {

@@ -12,14 +12,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="area in vm.areas | filter:filtro">
-                            <td>{{area.NOMAREA}}</td>                  
-                            <td>            
-                                <a class="btn-floating btn-large waves-effect waves-light red"><i class="large material-icons">edit</i></a>                     
+                        <tr ng-repeat="area in vm.areas| filter:filtro">
+                            <td>{{area.NOMAREA}}</td>  
+                            <td>
+                                <p>                                    
+                                    <a data-ng-click="edit(contact)" href="javascript:;">Edit</a> |
+                                    <a data-ng-click="showconfirm(contact)" href="javascript:;">Delete</a>
+                                </p>
+                            </td>
+                            <!--td>            
+                                <a class="btn-floating btn-large waves-effect waves-light red"  ng-click="vm.modificar(usuario)"><i class="large material-icons">edit</i></a>                     
                             </td>
                             <td>
                                 <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">clear</i></a>
-                            </td>
+                            </td-->
                         </tr>
 
 
@@ -34,63 +40,57 @@
             </div>
         </div>
     </center>
-    <!--una modal de texto-->
-    <div id="modalAdd" class="modal">
-        <div class="modal-content center-align">    
-            <div class="row center-align">
-                <div class="input-field col s12" >
-                    <i class="material-icons prefix">library_books</i>
-                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                    <label>lo que sea</label>
+    <!--modal-->
+    <div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                    <h4 class="modal-title" id="myModalLabel" ng-hide="editMode">Add Contacto</h4>
+                    <h4 class="modal-title" id="H1" ng-show="editMode">Edit Contacto</h4>
                 </div>
-            </div>    
-        </div>        
-        <div class="modal-footer">
-            <a ng-click="addCompetencia()" class="modal-action waves-effect waves-green btn-flat">Nuevo</a>
-            <a  class="modal-action modal-close waves-effect waves-green btn-flat"  ng-click="mostrarmodal1()">Close</a>
-        </div>
-    </div>  
-    <!--una modal de imagenes-->
-    <div id="modalAddImagenes" class="modal">
-        <div class="modal-content center-align">   
-            <div class="row center-align">
-                <div class="input-field col s12" >
-                    <i class="material-icons prefix">library_books</i>
-                    <input type="text" class="validate" ng-model="newCompetencia.NOM_COMPETENCIA"> 
-                    <label>van imagenes</label>       
-                </div>
-            </div>    
-        </div>        
-        <div class="modal-footer">
-            <a ng-click="addCompetencia()" class="modal-action waves-effect waves-green btn-flat">Registrar</a>
-            <a  class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-    </div>
-    <!--una modal de modificar-->
-    <div id="modalAdd" class="modal">
-        <div class="modal-content center-align">
-            <h4>Modificar</h4>
-            <div class="row center-align">
-                <div class="input-field col s12" >
-                    <i class="material-icons prefix">library_books</i>
-                    <input type="text" class="validate" ng-model="newCompetencia.NOM_COMPETENCIA">
-                    <label>Competencia</label>
-                </div>
-            </div>
+                <div class="modal-body">
 
-            <div class="row center-align">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">library_books</i>
-                    <input type="text" class="validate" ng-model="newCompetencia.CATEGORIA">
-                    <label>Categoria</label>
+                    <form class="form-horizontal" role="form">
+
+                        <div class="form-group">
+
+                            <label for="Id" class="col-sm-3 control-label">Id</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="Id" name="Id" ng-model="Contact.Id" class="form-control" readonly="true" />
+                            </div>
+
+                            <label for="Name" class="col-sm-3 control-label">Nombre</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="Name" name="Nombre" ng-model="Contact.Nombre" class="form-control" />
+                            </div>
+
+                            <label for="Id" class="col-sm-3 control-label">Telefono</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="telefono" name="Telefono" ng-model="Contact.Telefono" class="form-control" />
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-sm-offset-3 col-sm-9">
+
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" ng-click="cancel()" />
+
+                        <span data-ng-hide="editMode">
+                            <input type="submit" value="Add" data-ng-click="add()" class="btn btn-primary" />
+                        </span>
+                        <span data-ng-show="editMode">
+                            <input type="submit" value="Update" data-ng-click="update()" class="btn btn-primary" />
+                        </span>
+                    </div>
                 </div>
             </div>
-        </div>        
-        <div class="modal-footer">
-            <a ng-click="addCompetencia()" class="modal-action waves-effect waves-green btn-flat">Registrar</a>
-            <a  class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
     </div>
+
+
 </div>
 <script type="text/javascript">
             $(document).ready(function () {
