@@ -53,7 +53,7 @@ app.service("servicioAreas", function ($http) {
         return req;
     };
     this.put = function (id, registro) {
-        var request = $http({
+        var req = $http({
             method: 'PUT',
             url: uri + "/" + id,
             headers: {
@@ -61,8 +61,12 @@ app.service("servicioAreas", function ($http) {
             },
             data: registro
         });
-        return request;
-    };       
+        return req;
+    };
+    this.delete = function (id) {
+        var req = $http.delete(uri + "/" + id);
+        return req;
+    };    
 });
 
 app.service("servicioEncabezados", function ($http) {

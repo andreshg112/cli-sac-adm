@@ -204,6 +204,8 @@ app.controller('gestionarAreasCtrl', ['servicioAreas', function (servicioAreas) 
         console.log("gestionarAreasCtrl");
         var vm = this;
         vm.areas = [];
+        vm.area={};
+        vm.codarea = "";
         vm.filtro = "";
         function cargarAreas() {
             var promiseGet = servicioAreas.getAll(vm.filtro);
@@ -222,6 +224,43 @@ app.controller('gestionarAreasCtrl', ['servicioAreas', function (servicioAreas) 
             );
         }
         cargarAreas();
+        vm.eliminar = function (area) {
+            console.log(area);
+            var promise = servicioAreas.delete(area.CODAREA);
+            promise.then(
+                    function (pl) {
+                        var respuesta = pl.data;
+                        alert(respuesta.mensaje);
+                        if (respuesta.result) {
+                            vm.cargarAreas();
+                        }
+                    },
+                    function (errorPl) {
+                        console.log('Error: ', errorPl);
+                    }
+            );
+        };
+        vm.asignarDatos = function (area) {
+            //Se asignan los datos para la modificación.
+            vm.area = area;
+            vm.codarea = area.CODAREA;
+        };
+        vm.modificar = function () {
+            var promise = servicioAreas.put(vm.codarea, vm.area);
+            promise.then(
+                    function (pl) {
+                        var respuesta = pl.data;
+                        console.log(respuesta);
+                        alert(respuesta.mensaje);
+                        if (respuesta.result) {
+                            $('#modal1').closeModal();
+                            vm.cargarAreas();
+                        }
+                    },
+                    function (errorPl) {
+                        console.log('Error en la solicitud: ', errorPl);
+                    });
+        };
     }]);
 
 app.controller('registroAreasCtrl', ['servicioAreas', function (servicioAreas) {
