@@ -29,10 +29,10 @@
                                 {{usuario.EMAIL}}
                             </td>
                             <td>
-                                {{usuario.SEXO}}        
+                                {{usuario.SEXO}}
                             </td>
-                            <td>                                  
-                                <a ng-click="vm.usuario = usuario;" 
+                            <td>
+                                <a ng-click="vm.asignarDatos(usuario);" 
                                    class="modal-trigger btn-floating btn-large waves-effect waves-light red"
                                    onclick="$('#modal1').openModal();">
                                     <i class="large material-icons">edit</i>
@@ -120,7 +120,7 @@
                         <br>
                         <label><h2><b>Actualización de datos</b></h2></label>
                         <br><br>					
-                        <form action="" > 					      
+                        <form>
                             <div class="row">
                                 <label>Nombres</label>
                                 <div class="input-field col s12">
@@ -156,17 +156,18 @@
                                 <div class="input-field col s6">
                                     <select ng-model="vm.usuario.SEXO" class="browser-default">
                                         <option value="F">F</option>
-                                        <option value="M">M </option>
+                                        <option value="M">M</option>
                                     </select>
                                 </div>
                             </div>
                         </form>
                         <br><br>
                     </div>
+                </div>
             </center>
         </div>
         <div class="modal-footer">
-            <a class="modal-action modal-close waves-effect waves-green btn-flat ">Guardar</a>
+            <button ng-click="vm.modificar()" class="btn pink">Guardar</button>
         </div>
     </div>
 

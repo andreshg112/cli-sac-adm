@@ -1,3 +1,7 @@
+//Las propiedades/campos que se reciben de la base de datos, vienen en mayúsculas.
+//Es decir, los campos de las tablas (propiedades de los objetos)
+//deben usarse de la siguiente manera: objeto.PROPIEDAD
+
 app.controller('gestionPreguntasCtrl', ['servicioPreguntas', 'servicioAreas', function (servicioPreguntas, servicioAreas) {
         console.log("gestionPreguntasCtrl");
         var vm = this;
@@ -252,6 +256,7 @@ app.controller('gestionarUsuariosCtrl', ['servicioUsuarios', function (servicioU
         console.log("gestionarUsuariosCtrl");
         var vm = this;
         vm.usuario = {}; //Representa al usuario que se seleccione para modificar
+        vm.email = ""; //El email de quien se va a modificar
         vm.usuarios = [];
         vm.filtro = "";
         vm.cargarUsuarios = function () {
@@ -286,7 +291,25 @@ app.controller('gestionarUsuariosCtrl', ['servicioUsuarios', function (servicioU
                     }
             );
         };
-        vm.modificar = function (usuario) {
-            
+        vm.asignarDatos = function (usuario) {
+            //Se asignan los datos para la modificación.
+            vm.usuario = usuario;
+            vm.email = usuario.EMAIL;
+        };
+        vm.modificar = function () {
+            var promise = servicioUsuarios.put(vm.email, vm.usuario);
+            promise.then(
+                    function (pl) {
+                        var respuesta = pl.data;
+                        console.log(respuesta);
+                        alert(respuesta.mensaje);
+                        if (respuesta.result) {
+                            $('#modal1').closeModal();
+                            vm.cargarUsuarios();
+                        }
+                    },
+                    function (errorPl) {
+                        console.log('Error en la solicitud: ', errorPl);
+                    });
         };
     }]);
