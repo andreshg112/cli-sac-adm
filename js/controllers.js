@@ -261,13 +261,24 @@ app.controller('gestionarUsuariosCtrl', ['servicioUsuarios', function (servicioU
                         var respuesta = pl.data;
                         vm.usuarios = respuesta.usuarios;
                         console.log(vm.usuarios);
-                        //vm.gridOptions1.data = vm.areas;
                     },
                     function (errorPl) {
-                        console.log('Error: ');
-                        console.log(errorPl);
+                        console.log('Error: ', errorPl);
                     }
             );
-        }
+        };
         vm.cargarUsuarios();
+        vm.eliminar = function (usuario) {
+            console.log(usuario);
+            var promise = servicioUsuarios.delete(usuario.EMAIL);
+            promise.then(
+                    function (pl) {
+                        var respuesta = pl.data;
+                        alert(respuesta.mensaje);
+                    },
+                    function (errorPl) {
+                        console.log('Error: ', errorPl);
+                    }
+            );
+        };
     }]);

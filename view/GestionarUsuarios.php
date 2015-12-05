@@ -13,7 +13,6 @@
                             <th data-field="id">Nombres</th>
                             <th data-field="name">Apellidos</th>
                             <th data-field="price">Email</th>
-                            <th data-field="id">Password</th>
                             <th data-field="name">Sexo</th>
                             <th data-field="price">Modificar</th>
                             <th data-field="price">Eliminar</th>
@@ -23,18 +22,12 @@
                         <tr ng-repeat="usuario in vm.usuarios">
                             <td>
                                 {{usuario.NOMBRE}}
-                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
                             </td>
                             <td>
                                 {{usuario.APELLIDO}}
-                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
                             <td>
                                 {{usuario.EMAIL}}
-                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
                             </td>
-                            <td>
-                                {{usuario.CONTRASENIA}}
-                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">password</a></td>
                             <td>
                                 {{usuario.SEXO}}        
                             </td>
@@ -42,11 +35,11 @@
                                 <a class=" modal-trigger btn-floating btn-large waves-effect waves-light red"  ng-click="mostrarmodalusuarios()"><i class="large material-icons">edit</i></a>                     
                             </td>
                             <td>
-                                <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">clear</i></a>
+                                <a ng-click="vm.eliminar(usuario);" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">clear</i></a>
                             </td>
                         </tr>
                     </tbody>
-                </table>  
+                </table>
                 <br>
                 <!-- falta la paginacion-->
             </div>
@@ -152,7 +145,7 @@
                                     <label>Password</label>
                                 </div>
                             </div>  
-                            
+
                             <div class="left-align"> 	
                                 <label>Sexo:</label>
                             </div>											
@@ -178,20 +171,20 @@
     <!--aqui termina la modal que estoy haciendo-->
 </div>
 <script type="text/javascript">
-                $(document).ready(function () {
-            $('.modal-trigger').leanModal();
-            $('select').material_select();
-        });
+            $(document).ready(function () {
+                $('.modal-trigger').leanModal();
+                $('select').material_select();
+            });
 </script>
 <script>
-        function mostrarmodal1() {
-            $("#modalAddImagenes").fadeOut();
-        }
+            function mostrarmodal1() {
+                $("#modalAddImagenes").fadeOut();
+            }
 </script>
 <script>
-        function mostrarmodalusuarios() {
-            $("#modalUsuarios").openModal();
-        }
+            function mostrarmodalusuarios() {
+                $("#modalUsuarios").openModal();
+            }
 </script>
 
 
