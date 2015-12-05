@@ -9,9 +9,9 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
-<body style="background-color: #fafafa; !important">
+<body style="background-color: #fafafa !important;">
 	<main>
-		<div  style="margin-top: -0.5rem; padding: 15px; background-color: #0072C6; !important">
+		<div  style="margin-top: -0.5rem; padding: 15px; background-color: #0072C6 !important;">
 			<h5 class="title center-align" style="color: #fff;"><b>SaberApp</b></h5>
 		</div>
 		<br><br><br>
@@ -60,7 +60,7 @@
 	</main>
 </div>
 
-<footer class="page-footer"  style=" background-color: #eeeeee; !important">		
+<footer class="page-footer"  style=" background-color: #eeeeee !important;">		
 	<div class="footer-copyright">
 		<div class="container">
 			© 2014 Copyright Text
