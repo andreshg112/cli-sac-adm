@@ -1,3 +1,7 @@
+//Las propiedades/campos que se reciben de la base de datos, vienen en mayúsculas.
+//Es decir, los campos de las tablas (propiedades de los objetos)
+//deben usarse de la siguiente manera: objeto.PROPIEDAD
+
 app.controller('gestionPreguntasCtrl', ['servicioPreguntas', 'servicioAreas', function (servicioPreguntas, servicioAreas) {
         console.log("gestionPreguntasCtrl");
         var vm = this;
@@ -250,9 +254,12 @@ app.controller('registroAreasCtrl', ['servicioAreas', function (servicioAreas) {
 app.controller('gestionarUsuariosCtrl', ['servicioUsuarios', function (servicioUsuarios) {
         console.log("gestionarUsuariosCtrl");
         var vm = this;
+        vm.usuario = {}; //Representa al usuario que se seleccione para modificar
+        vm.email = ""; //El email de quien se va a modificar
         vm.usuarios = [];
         vm.filtro = "";
         vm.cargarUsuarios = function () {
+            vm.usuarios = [];
             var promiseGet = servicioUsuarios.getAll(vm.filtro);
             promiseGet.then(
                     function (pl) {
@@ -260,13 +267,48 @@ app.controller('gestionarUsuariosCtrl', ['servicioUsuarios', function (servicioU
                         var respuesta = pl.data;
                         vm.usuarios = respuesta.usuarios;
                         console.log(vm.usuarios);
-                        //vm.gridOptions1.data = vm.areas;
                     },
                     function (errorPl) {
-                        console.log('Error: ');
-                        console.log(errorPl);
+                        console.log('Error: ', errorPl);
                     }
             );
-        }
+        };
         vm.cargarUsuarios();
+        vm.eliminar = function (usuario) {
+            console.log(usuario);
+            var promise = servicioUsuarios.delete(usuario.EMAIL);
+            promise.then(
+                    function (pl) {
+                        var respuesta = pl.data;
+                        alert(respuesta.mensaje);
+                        if (respuesta.result) {
+                            vm.cargarUsuarios();
+                        }
+                    },
+                    function (errorPl) {
+                        console.log('Error: ', errorPl);
+                    }
+            );
+        };
+        vm.asignarDatos = function (usuario) {
+            //Se asignan los datos para la modificación.
+            vm.usuario = usuario;
+            vm.email = usuario.EMAIL;
+        };
+        vm.modificar = function () {
+            var promise = servicioUsuarios.put(vm.email, vm.usuario);
+            promise.then(
+                    function (pl) {
+                        var respuesta = pl.data;
+                        console.log(respuesta);
+                        alert(respuesta.mensaje);
+                        if (respuesta.result) {
+                            $('#modal1').closeModal();
+                            vm.cargarUsuarios();
+                        }
+                    },
+                    function (errorPl) {
+                        console.log('Error en la solicitud: ', errorPl);
+                    });
+        };
     }]);

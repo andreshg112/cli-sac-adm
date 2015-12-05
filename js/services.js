@@ -123,15 +123,17 @@ app.service("servicioUsuarios", function ($http) {
     this.put = function (id, registro) {
         var req = $http({
             method: 'PUT',
-            url: uri,
+            url: uri + "/" + id,
             headers: {
                 'Content-Type': "application/x-www-form-urlencoded"
             },
             data: registro
         });
-        var url = uri + "/" + id;
-        var request = $http.put(url, registro);
-        return request;
+        return req;
+    };
+    this.delete = function (id) {
+        var req = $http.delete(uri + "/" + id);
+        return req;
     };
 });
 
