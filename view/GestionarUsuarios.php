@@ -23,11 +23,11 @@
                         <tr ng-repeat="usuario in vm.usuarios">
                             <td>
                                 {{usuario.NOMBRE}}
-                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
+                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;"></a>
                             </td>
                             <td>
                                 {{usuario.APELLIDO}}
-                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
+                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;"></a>
                             <td>
                                 {{usuario.EMAIL}}
                                 <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;"></a>
@@ -112,7 +112,7 @@
 
     <!-- esta es la modal que estoy haciendo-->
     <!-- Modal Trigger -->
-    <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Modal</a>
+    <!--a class="modal-trigger waves-effect waves-light btn" href="#modal1">Modal</a-->
 
     <!-- Modal Structure -->
     <div id="modal1" class="modal modal-fixed-footer">

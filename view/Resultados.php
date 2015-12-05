@@ -6,7 +6,7 @@
  <script src="Chart.js"></script>
 <script>
 var barChartData = {
-  labels : ["MATEMATICAS","QUIMICA","BIOLOGIA","GEOGRAFIA","SOCIALES","ESTADISTICA","FISICA"],
+  labels : ["LECT. CRITICA","MATEMATICAS","C. NATURALES","C. SOCIALES","INGES","COMP. CIUDADANA","FISICA"],
   datasets : [
   {
     fillColor : "#00e676",
