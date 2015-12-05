@@ -203,7 +203,8 @@ app.controller('registroEncabezadosCtrl', ['servicioEncabezados', 'servicioAreas
 app.controller('gestionarAreasCtrl', ['servicioAreas', function (servicioAreas) {
         console.log("gestionarAreasCtrl");
         var vm = this;
-        vm.areas = [];  
+        vm.areas = [];
+        vm.filtro = "";
         function cargarAreas() {
             var promiseGet = servicioAreas.getAll(vm.filtro);
             promiseGet.then(
