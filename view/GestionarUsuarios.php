@@ -32,7 +32,11 @@
                                 {{usuario.SEXO}}        
                             </td>
                             <td>                                  
-                                <a class=" modal-trigger btn-floating btn-large waves-effect waves-light red"  ng-click="mostrarmodalusuarios()"><i class="large material-icons">edit</i></a>                     
+                                <a ng-click="vm.usuario = usuario;" 
+                                   class="modal-trigger btn-floating btn-large waves-effect waves-light red"
+                                   onclick="$('#modal1').openModal();">
+                                    <i class="large material-icons">edit</i>
+                                </a>                     
                             </td>
                             <td>
                                 <a ng-click="vm.eliminar(usuario);" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">clear</i></a>
@@ -46,66 +50,66 @@
         </div>
     </center>
     <!--una modal de texto-->
-    <div id="modalAdd" class="modal">
-        <div class="modal-content center-align">    
-            <div class="row center-align">
-                <div class="input-field col s12" >
-                    <i class="material-icons prefix">library_books</i>
-                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                    <label>lo que sea</label>
-                </div>
-            </div>    
-        </div>        
-        <div class="modal-footer">
-            <a ng-click="addCompetencia()" class="modal-action waves-effect waves-green btn-flat">Nuevo</a>
-            <a  class="modal-action modal-close waves-effect waves-green btn-flat"  ng-click="mostrarmodal1()">Close</a>
-        </div>
-    </div>  
+    <!--    <div id="modalAdd" class="modal">
+            <div class="modal-content center-align">    
+                <div class="row center-align">
+                    <div class="input-field col s12" >
+                        <i class="material-icons prefix">library_books</i>
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label>lo que sea</label>
+                    </div>
+                </div>    
+            </div>        
+            <div class="modal-footer">
+                <a ng-click="addCompetencia()" class="modal-action waves-effect waves-green btn-flat">Nuevo</a>
+                <a  class="modal-action modal-close waves-effect waves-green btn-flat"  ng-click="mostrarmodal1()">Close</a>
+            </div>
+        </div>-->
     <!--una modal de imagenes-->
-    <div id="modalAddImagenes" class="modal">
-        <div class="modal-content center-align">   
-            <div class="row center-align">
-                <div class="input-field col s12" >
-                    <i class="material-icons prefix">library_books</i>
-                    <input type="text" class="validate" ng-model="newCompetencia.NOM_COMPETENCIA"> 
-                    <label>van imagenes</label>       
-                </div>
-            </div>    
-        </div>        
-        <div class="modal-footer">
-            <a ng-click="addCompetencia()" class="modal-action waves-effect waves-green btn-flat">Registrar</a>
-            <a  class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-    </div>
+    <!--    <div id="modalAddImagenes" class="modal">
+            <div class="modal-content center-align">   
+                <div class="row center-align">
+                    <div class="input-field col s12" >
+                        <i class="material-icons prefix">library_books</i>
+                        <input type="text" class="validate" ng-model="newCompetencia.NOM_COMPETENCIA"> 
+                        <label>van imagenes</label>       
+                    </div>
+                </div>    
+            </div>        
+            <div class="modal-footer">
+                <a ng-click="addCompetencia()" class="modal-action waves-effect waves-green btn-flat">Registrar</a>
+                <a  class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>-->
     <!--una modal de modificar-->
-    <div id="modalAdd" class="modal">
-        <div class="modal-content center-align">
-            <h4>Modificar</h4>
-            <div class="row center-align">
-                <div class="input-field col s12" >
-                    <i class="material-icons prefix">library_books</i>
-                    <input type="text" class="validate" ng-model="newCompetencia.NOM_COMPETENCIA">
-                    <label>Competencia</label>
+    <!--    <div id="modalAdd" class="modal">
+            <div class="modal-content center-align">
+                <h4>Modificar</h4>
+                <div class="row center-align">
+                    <div class="input-field col s12" >
+                        <i class="material-icons prefix">library_books</i>
+                        <input type="text" class="validate" ng-model="newCompetencia.NOM_COMPETENCIA">
+                        <label>Competencia</label>
+                    </div>
                 </div>
-            </div>
-
-            <div class="row center-align">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">library_books</i>
-                    <input type="text" class="validate" ng-model="newCompetencia.CATEGORIA">
-                    <label>Categoria</label>
+    
+                <div class="row center-align">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">library_books</i>
+                        <input type="text" class="validate" ng-model="newCompetencia.CATEGORIA">
+                        <label>Categoria</label>
+                    </div>
                 </div>
+            </div>        
+            <div class="modal-footer">
+                <a ng-click="addCompetencia()" class="modal-action waves-effect waves-green btn-flat">Registrar</a>
+                <a  class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
             </div>
-        </div>        
-        <div class="modal-footer">
-            <a ng-click="addCompetencia()" class="modal-action waves-effect waves-green btn-flat">Registrar</a>
-            <a  class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-    </div>
+        </div>-->
 
     <!-- esta es la modal que estoy haciendo-->
     <!-- Modal Trigger -->
-    <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Modal</a>
+    <!--    <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Modal</a>-->
 
     <!-- Modal Structure -->
     <div id="modal1" class="modal modal-fixed-footer">
@@ -114,77 +118,57 @@
                 <div class="card-panel" style="width:70%;">                         
                     <div class="row center" style="width:80%;">
                         <br>
-                        <label><h2><b>Registro</b></h2></label>
+                        <label><h2><b>Actualización de datos</b></h2></label>
                         <br><br>					
                         <form action="" > 					      
                             <div class="row">
+                                <label>Nombres</label>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">library_books</i>
-                                    <input  id="first_name" type="text" class="validate">
-                                    <label>Nombres</label>
+                                    <input ng-model="vm.usuario.NOMBRE" id="first_name" type="text" class="validate">
                                 </div>
-                            </div>  
+                            </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">library_books</i>
-                                    <input  id="first_name" type="text" class="validate">
+                                    <input ng-model="vm.usuario.APELLIDO" id="first_name" type="text" class="validate">
                                     <label>Apellidos</label>
                                 </div>
                             </div> 
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">library_books</i>
-                                    <input  id="first_name" type="text" class="validate">
+                                    <input ng-model="vm.usuario.EMAIL" id="first_name" type="text" class="validate">
                                     <label>Email</label>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">library_books</i>
-                                    <input id="password" type="password" class="validate" ng-model="password">        
-                                    <label>Password</label>
+                                    <input ng-model="vm.usuario.CONTRASENIA" id="password" type="password" class="validate">
+                                    <label>Contraseña</label>
                                 </div>
-                            </div>  
-
-                            <div class="left-align"> 	
+                            </div>
+                            <div class="left-align">
                                 <label>Sexo:</label>
-                            </div>											
-                            <div class="row">						
+                            </div>
+                            <div class="row">
                                 <div class="input-field col s6">
-                                    <select name="TipoEncabezado">
-                                        <option value="0" disabled selected>Seleccionar sexo</option>
-                                        <option value="areaUno">M </option>
-                                        <option value="areaDos">F</option>        
-                                    </select>       
-                                </div>                                 
+                                    <select ng-model="vm.usuario.SEXO" class="browser-default">
+                                        <option value="F">F</option>
+                                        <option value="M">M </option>
+                                    </select>
+                                </div>
+                            </div>
                         </form>
+                        <br><br>
                     </div>
-                    <br><br>					
-                </div>
             </center>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Guardar</a>
+            <a class="modal-action modal-close waves-effect waves-green btn-flat ">Guardar</a>
         </div>
     </div>
 
     <!--aqui termina la modal que estoy haciendo-->
 </div>
-<script type="text/javascript">
-            $(document).ready(function () {
-                $('.modal-trigger').leanModal();
-                $('select').material_select();
-            });
-</script>
-<script>
-            function mostrarmodal1() {
-                $("#modalAddImagenes").fadeOut();
-            }
-</script>
-<script>
-            function mostrarmodalusuarios() {
-                $("#modalUsuarios").openModal();
-            }
-</script>
-
-

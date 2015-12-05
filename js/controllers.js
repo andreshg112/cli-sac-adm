@@ -251,9 +251,11 @@ app.controller('registroAreasCtrl', ['servicioAreas', function (servicioAreas) {
 app.controller('gestionarUsuariosCtrl', ['servicioUsuarios', function (servicioUsuarios) {
         console.log("gestionarUsuariosCtrl");
         var vm = this;
+        vm.usuario = {}; //Representa al usuario que se seleccione para modificar
         vm.usuarios = [];
         vm.filtro = "";
         vm.cargarUsuarios = function () {
+            vm.usuarios = [];
             var promiseGet = servicioUsuarios.getAll(vm.filtro);
             promiseGet.then(
                     function (pl) {
@@ -275,10 +277,16 @@ app.controller('gestionarUsuariosCtrl', ['servicioUsuarios', function (servicioU
                     function (pl) {
                         var respuesta = pl.data;
                         alert(respuesta.mensaje);
+                        if (respuesta.result) {
+                            vm.cargarUsuarios();
+                        }
                     },
                     function (errorPl) {
                         console.log('Error: ', errorPl);
                     }
             );
+        };
+        vm.modificar = function (usuario) {
+            
         };
     }]);
