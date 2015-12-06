@@ -14,9 +14,9 @@
                     <thead>
                         <tr>
                             <th data-field="id">Encabezado</th>
-                            <th data-field="name">Imagen</th>
+                            <!--<th data-field="name">Imagen</th>-->
                             <th data-field="price">Enunciado</th>
-                            <th data-field="id">Imagen_Enunciado</th>
+                            <!--<th data-field="id">Imagen_Enunciado</th>-->
                             <th data-field="name">Opciones</th>
                             <th data-field="price">Modificar</th>
                             <th data-field="price">Eliminar</th>
@@ -25,17 +25,16 @@
                     <tbody>
                         <tr ng-repeat="pregunta in vm.preguntas">
                             <td>
-                                {{vm.pregunta.encabezado}}
-                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
+                                {{pregunta.encabezado.TITULO}}
                             </td>
-                            <td><a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Imagen</a></td>
+                            <!--<td><a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Imagen</a></td>-->
                             <td>
-                                  {{vm.pregunta.enunciado}}
-                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
+                                <div class="text">
+                                    {{pregunta.ENUNCIADO}}...
+                                </div>
                             </td>
-                            <td><a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Imagen_Enunciado</a></td>
+                            <!--<td><a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Imagen_Enunciado</a></td>-->
                             <td>
-                                  {{vm.pregunta.opciones}}
                                 <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
                             </td>
                             <td>            
