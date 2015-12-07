@@ -9,6 +9,8 @@ app.controller('gestionPreguntasCtrl', ['servicioPreguntas', 'servicioAreas', fu
         vm.areas = [];
         vm.areaSeleccionada = null;
         vm.pregunta = {};
+//        vm.codpregunta="";
+//        vm.filtro="";
         vm.mostrar = function (algo) {
             if (algo === undefined) {
                 algo = "";
@@ -67,6 +69,44 @@ app.controller('gestionPreguntasCtrl', ['servicioPreguntas', 'servicioAreas', fu
                 }
             ],
             data: vm.preguntas
+        };
+        
+        vm.eliminar = function (pregunta) {
+            console.log(pregunta);
+            var promise = servicioPreguntas.delete(pregunta.CODPREGUNTA);
+            promise.then(
+                    function (pl) {
+                        var respuesta = pl.data;
+                        alert(respuesta.mensaje);
+                        if (respuesta.result) {
+                            vm.loadPreguntas();
+                        }
+                    },
+                    function (errorPl) {
+                        console.log('Error: ', errorPl);
+                    }
+            );
+        };
+        vm.asignarDatos = function (pregunta) {
+            //Se asignan los datos para la modificación.
+            vm.pregunta = pregunta;
+            vm.codpregunta = pregunta.CODPREGUNTA;
+        };
+        vm.modificar = function () {
+            var promise = servicioPreguntas.put(vm.codpregunta, vm.pregunta);
+            promise.then(
+                    function (pl) {
+                        var respuesta = pl.data;
+                        console.log(respuesta);
+                        alert(respuesta.mensaje);
+                        if (respuesta.result) {
+                            $('#modal1').closeModal();
+                            vm.loadPreguntas();
+                        }
+                    },
+                    function (errorPl) {
+                        console.log('Error en la solicitud: ', errorPl);
+                    });
         };
     }]);
 
@@ -350,5 +390,36 @@ app.controller('gestionarUsuariosCtrl', ['servicioUsuarios', function (servicioU
                     function (errorPl) {
                         console.log('Error en la solicitud: ', errorPl);
                     });
+        };
+    }]);
+
+app.controller('registroUsuariosCtrl', ['servicioUsuarios', function (servicioUsuarios) {
+        var vm = this;
+        vm.usuarios = {
+        };
+        vm.NOMBRE = [];
+        vm.APELLIDO = [];
+        vm.EMAIL = [];
+        vm.CONTRASENIA = [];
+        vm.SEXO = [];
+        vm.registrar = function (usuario) {
+            var promisePost = servicioUsuarios.post(usuario);
+            vm.mostrar(promisePost);
+            promisePost.then(
+                    function (pl) {
+                        var respuesta = pl.data;
+                        console.log(respuesta);
+                        alert(respuesta.mensaje);
+                    },
+                    function (errorPl) {
+                        console.log('Error: ');
+                        console.log(errorPl);
+                    });
+        };
+        vm.mostrar = function (algo) {
+            if (algo === undefined) {
+                algo = "";
+            }
+            console.log(algo);
         };
     }]);

@@ -19,16 +19,21 @@ app.service("servicioPreguntas", function ($http) {
         });
         return req;
     };
-    this.put = function (id, contact) {
-        /*var request = $http({
-         method: "put",
-         url: uri+'/api/contactos/'+ id,
-         data: contact
-         });*/
-        var url = uri + "/" + id;
-        var request = $http.put(url, contact);
-        return request;
+    this.put = function (id, registro) {
+        var req = $http({
+            method: 'PUT',
+            url: uri + "/" + id,
+            headers: {
+                'Content-Type': "application/x-www-form-urlencoded"
+            },
+            data: registro
+        });
+        return req;
     };
+    this.delete = function (id) {
+        var req = $http.delete(uri + "/" + id);
+        return req;
+    };   
 });
 
 app.service("servicioAreas", function ($http) {

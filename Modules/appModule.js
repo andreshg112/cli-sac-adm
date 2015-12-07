@@ -22,6 +22,11 @@ app.config(["$routeProvider",
                     controller: 'gestionarUsuariosCtrl',
                     controllerAs: "vm"
                 })
+                .when('/Registrar/Usuarios', {
+                    templateUrl: 'view/RegistrarUsu.php',
+                    controller: 'registroUsuariosCtrl',
+                    controllerAs: "vm"
+                })
                 .when('/Gestionar/Area', {
                     templateUrl: 'view/GestionarArea.php',
                     controller: 'gestionarAreasCtrl',

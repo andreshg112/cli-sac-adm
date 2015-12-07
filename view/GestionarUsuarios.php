@@ -3,6 +3,9 @@
         <div class="card-panel" style="width:105%;">                         
             <div class="row center" style="width:100%;">     
                 <br> 
+                <div class="right-align">
+                    <a class="modal-trigger  waves-effect waves-light btn" href="#/Registrar/Usuarios" style="background-color: #ee6e73;">Registrar</a>
+                </div>
                 <table class="bordered">
                     <thead>
                         <tr><td></td>     
@@ -115,7 +118,7 @@
     <div id="modal1" class="modal modal-fixed-footer">
         <div class="modal-content">
             <center>
-                <div class="card-panel" style="width:70%;">                         
+                <div class="card-panel" style="width:100%;">                         
                     <div class="row center" style="width:80%;">
                         <br>
                         <label><h2><b>Actualización de datos</b></h2></label>
@@ -129,24 +132,83 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <label>Apellidos</label>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">library_books</i>
                                     <input ng-model="vm.usuario.APELLIDO" id="first_name" type="text" class="validate">
-                                    <label>Apellidos</label>
                                 </div>
                             </div> 
                             <div class="row">
+                                <label>Email</label>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">library_books</i>
                                     <input ng-model="vm.usuario.EMAIL" id="first_name" type="text" class="validate">
-                                    <label>Email</label>
                                 </div>
                             </div>
                             <div class="row">
+                                <label>Contraseña</label>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">library_books</i>
                                     <input ng-model="vm.usuario.CONTRASENIA" id="password" type="password" class="validate">
-                                    <label>Contraseña</label>
+                                </div>
+                            </div>
+                            <div class="left-align">
+                                <label>Sexo:</label>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <select ng-model="vm.usuario.SEXO" class="browser-default">
+                                        <option value="F">F</option>
+                                        <option value="M">M</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                        <br><br>
+                    </div>
+                </div>
+            </center>
+        </div>
+        <div class="modal-footer">
+            <button ng-click="vm.modificar()" class="btn pink">Guardar</button>
+        </div>
+    </div>
+    <!-- MODAL PARA GUARDAR-->
+    <div id="modal2" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <center>
+                <div class="card-panel" style="width:100%;">                         
+                    <div class="row center" style="width:80%;">
+                        <br>
+                        <label><h2><b>Registrar Usuarios</b></h2></label>
+                        <br><br>					
+                        <form>
+                            <div class="row">
+                                <label>Nombres</label>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">library_books</i>
+                                    <input ng-model="vm.usuario.NOMBRE" id="first_name" type="text" class="validate">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label>Apellidos</label>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">library_books</i>
+                                    <input ng-model="vm.usuario.APELLIDO" id="first_name" type="text" class="validate">
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <label>Email</label>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">library_books</i>
+                                    <input ng-model="vm.usuario.EMAIL" id="first_name" type="text" class="validate">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label>Contraseña</label>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">library_books</i>
+                                    <input ng-model="vm.usuario.CONTRASENIA" id="password" type="password" class="validate">
                                 </div>
                             </div>
                             <div class="left-align">

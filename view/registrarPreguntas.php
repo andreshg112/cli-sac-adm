@@ -45,7 +45,7 @@
                 <div class="row">              
                     <div class="input-field col s6">
                         <select class="browser-default" ng-model="vm.pregunta.tipo_opciones">
-                            <option value="TEXTO" disabled selected>Texto</option>
+                            <option value="TEXTO">Texto</option>
                             <option value="IMAGEN"> Imagen</option>                                        </select>       
                     </div>
                     <div class="input-field col s6">                

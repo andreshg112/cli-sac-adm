@@ -3,7 +3,9 @@
         <div class="card-panel" style="width:105%;">                         
             <div class="row center" style="width:100%;">     
                 <br>
-
+                <div class="right-align">
+                    <a class="waves-effect waves-light btn" href="#/Registro/Preguntas" style="background-color: #ee6e73;">Registrar</a>
+                </div>
                 <table class="bordered">
                     <thead>
                         <tr><td></td><th>Áreas:</th><td>     
@@ -25,7 +27,9 @@
                     <tbody>
                         <tr ng-repeat="pregunta in vm.preguntas">
                             <td>
+                                <div class="text">
                                 {{pregunta.encabezado.TITULO}}
+                                 </div>
                             </td>
                             <!--<td><a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Imagen</a></td>-->
                             <td>
@@ -49,11 +53,6 @@
 
                 <!--div ui-grid="vm.gridOptions" ui-grid-pagination></div-->
                 <br>
-                <div class="right-align">
-                    <a class="waves-effect waves-light btn" href="#/Registro/Preguntas" style="background-color: #ee6e73;">Registrar</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a class="waves-effect waves-light btn" href="#" style="background-color: #ee6e73;">Cancelar</a>
-                </div>
             </div>
         </div>
     </center>
