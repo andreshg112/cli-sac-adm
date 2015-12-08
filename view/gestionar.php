@@ -6,31 +6,37 @@
                 <div class="right-align">
                     <a class="waves-effect waves-light btn" href="#/Registro/Preguntas" style="background-color: #ee6e73;">Registrar</a>
                 </div>
+                <div class="row">
+                    <div class="col s6">
+                        <div class="col s3"> Áreas:</div>
+                        <div class="col s9">
+                            <select ng-model="vm.areaSeleccionada" ng-options="area.CODAREA as area.NOMAREA for area in vm.areas track by area.CODAREA">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="col s3">Filtro:</div>
+                        <div class="col s9"><input type="text"></div>
+                    </div>
+                </div>
                 <table class="bordered">
-                    <thead>
-                        <tr><td></td><th>Áreas:</th><td>     
-                                <select ng-model="vm.areaSeleccionada" ng-options="area.CODAREA as area.NOMAREA for area in vm.areas track by area.CODAREA">
-                                </select>
-                            </td><th>Filtro</th><td><input type="text"></td></tr>
-                    </thead>
-                    <thead>
-                        <tr>
-                            <th data-field="id">Encabezado</th>
-                            <!--<th data-field="name">Imagen</th>-->
-                            <th data-field="price">Enunciado</th>
-                            <!--<th data-field="id">Imagen_Enunciado</th>-->
-                            <th data-field="name">Opciones</th>
-                            <th data-field="price">Modificar</th>
-                            <th data-field="price">Eliminar</th>
-                        </tr>
+                    <tr>
+                        <!--<th data-field="id">Encabezado</th>-->
+                        <!--<th data-field="name">Imagen</th>-->
+                        <th data-field="price">Enunciado</th>
+                        <!--<th data-field="id">Imagen_Enunciado</th>-->
+                        <th data-field="name">Opciones</th>
+                        <th data-field="price">Modificar</th>
+                        <th data-field="price">Eliminar</th>
+                    </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="pregunta in vm.preguntas">
-                            <td>
+<!--                            <td>
                                 <div class="text">
                                 {{pregunta.encabezado.TITULO}}
                                  </div>
-                            </td>
+                            </td>-->
                             <!--<td><a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Imagen</a></td>-->
                             <td>
                                 <div class="text">
@@ -39,13 +45,17 @@
                             </td>
                             <!--<td><a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Imagen_Enunciado</a></td>-->
                             <td>
-                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;">Ver más</a>
-                            </td>
-                            <td>            
-                                <a class="btn-floating btn-large waves-effect waves-light red"><i class="large material-icons">edit</i></a>                     
+                                <a class="modal-trigger" ng-click="vm.mostrarModal()" style="cursor: pointer;" onclick="$('#modal2').openModal();">Ver más</a>
                             </td>
                             <td>
-                                <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">clear</i></a>
+                                <a ng-click="vm.asignarDatos(pregunta);" 
+                                   class="modal-trigger btn-floating btn-large waves-effect waves-light red"
+                                   onclick="$('#modal1').openModal();">
+                                    <i class="large material-icons">edit</i>
+                                </a>                     
+                            </td>
+                            <td>
+                                <a ng-click="vm.eliminar(pregunta);" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">clear</i></a>
                             </td>
                         </tr>               
                     </tbody>
@@ -57,60 +67,59 @@
         </div>
     </center>
     <!--una modal de texto-->
-    <div id="modalAdd" class="modal">
-        <div class="modal-content center-align">    
-            <div class="row center-align">
-                <div class="input-field col s12" >
-                    <i class="material-icons prefix">library_books</i>
-                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                    <label>lo que sea</label>
+    <div id="modal1" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <center>
+                <div class="card-panel" style="width:100%;">                         
+                    <div class="row center" style="width:80%;">
+                        <br>
+                        <label><h2><b>Actualización de datos</b></h2></label>
+                        <br><br>					
+                        <form>
+                            <div class="row">
+                                <label>Enunciado</label>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">library_books</i>
+                                    <textarea  ng-model="vm.pregunta.ENUNCIADO" id="first_name" type="text" class="validate"></textarea>
+                                </div>
+                            </div>  
+                            <div class="row" ng-repeat="opcion in vm.pregunta.opciones">
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">library_books</i>
+                                    <input type="text" ng-model="opcion.DESCRIPCION">
+                                </div>
+                            </div>
+                        </form>
+                        <br><br>
+                    </div>
                 </div>
-            </div>    
-        </div>        
-        <div class="modal-footer">
-            <a ng-click="addCompetencia()" class="modal-action waves-effect waves-green btn-flat">Nuevo</a>
-            <a  class="modal-action modal-close waves-effect waves-green btn-flat"  ng-click="mostrarmodal1()">Close</a>
+            </center>
         </div>
-    </div>	
-    <!--una modal de imagenes-->
-    <div id="modalAddImagenes" class="modal">
-        <div class="modal-content center-align">   
-            <div class="row center-align">
-                <div class="input-field col s12" >
-                    <i class="material-icons prefix">library_books</i>
-                    <input type="text" class="validate" ng-model="newCompetencia.NOM_COMPETENCIA"> 
-                    <label>van imagenes</label>       
-                </div>
-            </div>    
-        </div>        
         <div class="modal-footer">
-            <a ng-click="addCompetencia()" class="modal-action waves-effect waves-green btn-flat">Registrar</a>
-            <a  class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            <button ng-click="vm.modificar()" class="btn pink">Guardar</button>
         </div>
     </div>
-    <!--una modal de modificar-->
-    <div id="modalAdd" class="modal">
-        <div class="modal-content center-align">
-            <h4>Modificar</h4>
-            <div class="row center-align">
-                <div class="input-field col s12" >
-                    <i class="material-icons prefix">library_books</i>
-                    <input type="text" class="validate" ng-model="newCompetencia.NOM_COMPETENCIA">
-                    <label>Competencia</label>
-                </div>
-            </div>
 
-            <div class="row center-align">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">library_books</i>
-                    <input type="text" class="validate" ng-model="newCompetencia.CATEGORIA">
-                    <label>Categoria</label>
+    <!-- modal opciones-->
+    <div id="modal2" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <center>
+                <div class="card-panel" style="width:100%;">                         
+                    <div class="row center" style="width:80%;">
+                        <br>
+                        <label><h2><b>Opciones</b></h2></label>
+                        <br><br>					
+                        <form>
+                            <div class="row center" style="width:70%;" ng-repeat="opcion in vm.pregunta.opciones">                   
+                                <center>
+                                    <label>{{opcion.DESCRIPCION}}</label>
+                                </center>
+                            </div>
+                        </form>
+                        <br><br>
+                    </div>
                 </div>
-            </div>
-        </div>        
-        <div class="modal-footer">
-            <a ng-click="addCompetencia()" class="modal-action waves-effect waves-green btn-flat">Registrar</a>
-            <a  class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            </center>
         </div>
     </div>
 </div>

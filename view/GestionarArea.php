@@ -3,7 +3,7 @@
         <div class="card-panel" style="width:100%;">                         
             <div class="row center" style="width:100%;">
                 <div class="right-align">
-                    <a class="modal-trigger waves-effect waves-light btn"  onclick="$('#modal2').openModal();"  style="background-color: #ee6e73;">Registrar</a>
+                    <a class="modal-trigger waves-effect waves-light btn"  href="#/Registro/Areas"  style="background-color: #ee6e73;">Registrar</a>
                 </div> 
                 <br>  
                 <table class="bordered">                   

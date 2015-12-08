@@ -58,8 +58,8 @@
                 <div class="row" ng-repeat="opcion in vm.inputOpciones">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">library_books</i>
-                        <textarea type="text" ng-model="vm.pregunta.opciones[$index].descripcion"></textarea>
-                        <label>Opción {{opcion}}</label>
+                        <input type="text" ng-model="vm.pregunta.opciones[$index].descripcion">
+                       <label class="left-align">Opción {{opcion}}</label>
                     </div>
                     <div class="input-field col s6">
                         <form action="#">
