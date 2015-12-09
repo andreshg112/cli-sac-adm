@@ -446,12 +446,17 @@ app.controller('registroUsuariosCtrl', ['servicioUsuarios', function (servicioUs
         };
     }]);
 
-app.controller('resultadosController', ['servicioResultados', function (servicioResultados) {
+app.controller('resultadosController', ['servicioResultados','servicioUsuarios', function (servicioResultados,servicioUsuarios) {
         var vm = this;
         vm.correctas = 0;
         vm.incorrectas = 0;
         vm.total = 0;
         vm.resultados = [];
+         vm.resultadosEspecifico = [];
+        vm.usuarios = [];
+        vm.filtro = "";
+        vm.usuario = {}; //Representa al usuario que se seleccione para modificar
+        vm.email = "";
         cargarResultados = function () {
             var promise = servicioResultados.getAll();
             promise.then(
@@ -468,4 +473,41 @@ app.controller('resultadosController', ['servicioResultados', function (servicio
             );
         };
         cargarResultados();
+        vm.cargarUsuarios = function () {
+            vm.usuarios = [];
+            var promiseGet = servicioUsuarios.getAll(vm.filtro);
+            promiseGet.then(
+                    function (pl) {
+                        console.log(pl);
+                        var respuesta = pl.data;
+                        vm.usuarios = respuesta.usuarios;
+                        console.log(vm.usuarios);
+                    },
+                    function (errorPl) {
+                        console.log('Error: ', errorPl);
+                    }
+            );
+        };
+        vm.cargarUsuarios();
+        vm.cargarResultadosEspecificos = function () {
+            vm.usuarios = [];
+            var promise = servicioResultados.get(JSON.parse(localStorage.usuario).EMAIL);
+            promise.then(
+                    function (pl) {
+                        var respuesta = pl.data;
+                        vm.correctas = respuesta.correctas;
+                        vm.incorrectas = respuesta.incorrectas;
+                        vm.total = vm.correctas + vm.incorrectas;
+                        vm.resultadosEspecificos = respuesta.resultadosEspecificos;
+                    },
+                    function (errorPl) {
+                        console.log('Error en la solicitud: ', errorPl);
+                    }
+            );
+        };
+        vm.asignarDatos = function (usuario) {
+            //Se asignan los datos para la modificación.
+            vm.usuario = usuario;
+            vm.email = usuario.EMAIL;
+        };
     }]);
