@@ -1,6 +1,28 @@
 //Las propiedades/campos que se reciben de la base de datos, vienen en mayúsculas.
 //Es decir, los campos de las tablas (propiedades de los objetos)
 //deben usarse de la siguiente manera: objeto.PROPIEDAD
+app.controller('loginController', ['servicioUsuarios', function (servicioUsuarios) {
+        var vm = this;
+        vm.datos = {};
+        vm.iniciarSesion = function () {
+            console.log(vm.datos);
+            var promisePost = servicioUsuarios.iniciarSesion(vm.datos);
+            promisePost.then(
+                    function (pl) {
+                        var respuesta = pl.data;
+                        console.log(respuesta);
+                        alert(respuesta.mensaje);
+                        if (respuesta.result == 1) {
+                            localStorage.usuario = JSON.stringify(respuesta.usuario);
+                            location.href = "index.php";
+                        }
+                    },
+                    function (errorPl) {
+                        console.log('Error en la solicitud: ', errorPl);
+                    });
+        };
+
+    }]);
 
 app.controller('gestionPreguntasCtrl', ['servicioPreguntas', 'servicioAreas', function (servicioPreguntas, servicioAreas) {
         console.log("gestionPreguntasCtrl");
@@ -70,7 +92,7 @@ app.controller('gestionPreguntasCtrl', ['servicioPreguntas', 'servicioAreas', fu
             ],
             data: vm.preguntas
         };
-        
+
         vm.eliminar = function (pregunta) {
             console.log(pregunta);
             var promise = servicioPreguntas.delete(pregunta.CODPREGUNTA);
@@ -244,7 +266,7 @@ app.controller('gestionarAreasCtrl', ['servicioAreas', function (servicioAreas) 
         console.log("gestionarAreasCtrl");
         var vm = this;
         vm.areas = [];
-        vm.area={};
+        vm.area = {};
         vm.codarea = "";
         vm.filtro = "";
         function cargarAreas() {
@@ -422,4 +444,28 @@ app.controller('registroUsuariosCtrl', ['servicioUsuarios', function (servicioUs
             }
             console.log(algo);
         };
+    }]);
+
+app.controller('resultadosController', ['servicioResultados', function (servicioResultados) {
+        var vm = this;
+        vm.correctas = 0;
+        vm.incorrectas = 0;
+        vm.total = 0;
+        vm.resultados = [];
+        cargarResultados = function () {
+            var promise = servicioResultados.getAll();
+            promise.then(
+                    function (pl) {
+                        var respuesta = pl.data;
+                        vm.correctas = respuesta.correctas;
+                        vm.incorrectas = respuesta.incorrectas;
+                        vm.total = vm.correctas + vm.incorrectas;
+                        vm.resultados = respuesta.resultados;
+                    },
+                    function (errorPl) {
+                        console.log('Error en la solicitud: ', errorPl);
+                    }
+            );
+        };
+        cargarResultados();
     }]);

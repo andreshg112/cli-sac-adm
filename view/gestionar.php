@@ -8,13 +8,6 @@
                 </div>
                 <div class="row">
                     <div class="col s6">
-                        <div class="col s3"> Áreas:</div>
-                        <div class="col s9">
-                            <select ng-model="vm.areaSeleccionada" ng-options="area.CODAREA as area.NOMAREA for area in vm.areas track by area.CODAREA">
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col s6">
                         <div class="col s3">Filtro:</div>
                         <div class="col s9"><input type="text"></div>
                     </div>

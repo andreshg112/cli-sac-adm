@@ -3,7 +3,7 @@
       <div class="row">
         <div class="input-field col s10">
           <i class="material-icons prefix">library_books</i>
-          <input  id="first_name" type="number" class="validate">
+          <input  id="first_name" type="text" class="validate" ng-model="vm.filtro" ng-change="vm.cargarUsuarios()">
           <label>Identificacion</label>
         </div>
       </div>                
@@ -13,21 +13,22 @@
       <div class="row">
         <div class="input-field col s10">
           <table class="striped" border="1">
+            <caption>Resultados por área</caption>
             <thead>
-              <tr>
-                <th data-field="id">Preguntas</th>
-                <th data-field="name">Correctas</th>
-                <th data-field="name">Incorrectas</th>          
-              </tr>
+                <tr>
+                    <th>Área</th>
+                    <th>Correctas</th>
+                    <th>Incorrectas</th>
+                </tr>
             </thead>
             <tbody>
-              <tr style="background-color: #f9fbe7;">
-                <td>1789</td>
-                <td>1000</td>
-                <td>789</td>
-              </tr>         
+                <tr ng-repeat="resultado in vm.resultados">
+                    <td>{{resultado.NOMAREA}}</td>
+                    <td>{{resultado.CORRECTAS}}</td>
+                    <td>{{resultado.INCORRECTAS}}</td>
+                </tr>
             </tbody>
-          </table>
+        </table>
         </div>
       </div> 
       <br><br><br>              

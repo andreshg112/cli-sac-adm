@@ -39,12 +39,12 @@ app.config(["$routeProvider",
                 })
                 .when('/Gestionar/Resultados_generales', {
                     templateUrl: 'view/resultados.php',
-                    controller: 'competenciasController',
+                    controller: 'resultadosController',
                     controllerAs: "vm"
                 })
                 .when('/Gestionar/Resultados_especificos', {
                     templateUrl: 'view/resultadoEsp.php',
-                    controller: 'competenciasController',
+                    controller: 'resultadosController',
                     controllerAs: "vm"
                 })
                 .when('/Gestionar/Principal', {
