@@ -489,7 +489,7 @@ app.controller('resultadosController', ['servicioResultados','servicioUsuarios',
             );
         };
         vm.cargarUsuarios();
-        vm.cargarResultadosEspecificos = function () {
+        cargarResultadosEspecificos = function () {
             vm.usuarios = [];
             var promise = servicioResultados.get(JSON.parse(localStorage.usuario).EMAIL);
             promise.then(
@@ -505,6 +505,7 @@ app.controller('resultadosController', ['servicioResultados','servicioUsuarios',
                     }
             );
         };
+        cargarResultadosEspecificos();
         vm.asignarDatos = function (usuario) {
             //Se asignan los datos para la modificación.
             vm.usuario = usuario;

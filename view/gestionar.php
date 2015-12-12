@@ -6,12 +6,12 @@
                 <div class="right-align">
                     <a class="waves-effect waves-light btn" href="#/Registro/Preguntas" style="background-color: #ee6e73;">Registrar</a>
                 </div>
-                <div class="row">
+<!--                <div class="row">
                     <div class="col s6">
                         <div class="col s3">Filtro:</div>
                         <div class="col s9"><input type="text"></div>
                     </div>
-                </div>
+                </div>-->
                 <table class="bordered">
                     <tr>
                         <!--<th data-field="id">Encabezado</th>-->
@@ -105,7 +105,7 @@
                         <form>
                             <div class="row center" style="width:70%;" ng-repeat="opcion in vm.pregunta.opciones">                   
                                 <center>
-                                    <label>{{opcion.DESCRIPCION}}</label>
+                                    <label><h6>{{opcion.DESCRIPCION}}</h6></label>
                                 </center>
                             </div>
                         </form>
